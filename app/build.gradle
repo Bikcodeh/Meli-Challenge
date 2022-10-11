@@ -90,6 +90,8 @@ dependencies {
     /** Accompanist */
     implementation "com.google.accompanist:accompanist-systemuicontroller:0.24.11-rc"
     implementation 'com.google.accompanist:accompanist-swiperefresh:0.24.11-rc'
+    /** Timber */
+    implementation "com.jakewharton.timber:timber:5.0.1"
 
     /** Testing */
     /** Truth google */
