@@ -19,7 +19,7 @@ fun Exception.toError(): Error = when (this) {
     else -> Error.Unknown(message ?: "")
 }
 
-fun Int.validateHttpCodeErrorCode(): Error {
+fun Int.validateHttpErrorCode(): Error {
     return HttpErrors.handleError(this)
 }
 
