@@ -68,8 +68,6 @@ dependencies {
     /** Lifecycle */
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1'
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.4.1'
-    /** Timber */
-    implementation "com.jakewharton.timber:timber:5.0.1"
     /** Material icons */
     implementation "androidx.compose.material:material-icons-extended:1.1.1"
     /** App center */
@@ -83,14 +81,6 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     kapt "com.google.dagger:hilt-compiler:$dagger_version"
     kapt "androidx.hilt:hilt-compiler:$hilt_compiler_version"
-    /** Retrofit */
-    implementation "com.squareup.retrofit2:retrofit:2.9.0"
-    /** OkHttp */
-    implementation "com.squareup.okhttp3:logging-interceptor:4.9.0"
-    implementation 'com.squareup.okhttp3:okhttp:4.9.3'
-    /** Moshi */
-    implementation "com.squareup.moshi:moshi-kotlin:1.9.3"
-    implementation "com.squareup.retrofit2:converter-moshi:2.9.0"
     /** Coil */
     implementation "com.github.skydoves:landscapist-coil:1.4.1"
     /** Lottie compose */
@@ -100,11 +90,6 @@ dependencies {
     /** Accompanist */
     implementation "com.google.accompanist:accompanist-systemuicontroller:0.24.11-rc"
     implementation 'com.google.accompanist:accompanist-swiperefresh:0.24.11-rc'
-    / ** Room */
-    implementation "androidx.room:room-runtime:2.3.0"
-    kapt "androidx.room:room-compiler:2.3.0"
-    implementation "androidx.room:room-ktx:2.3.0"
-    implementation 'androidx.compose.runtime:runtime-livedata:1.2.0-beta02'
 
     /** Testing */
     /** Truth google */
