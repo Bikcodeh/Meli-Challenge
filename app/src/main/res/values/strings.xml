@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">MeliChallenge</string>
+
+    <!-- Home -->
+    <string name="search">Search</string>
+    <string name="search_description">What are you looking for?</string>
+    <string name="clear_search_description">Clear search</string>
+    <string name="search_in_meli">Search in Meli</string>
+    <string name="empty_products">Ups! We didn\'t find anything.</string>
+    <string name="image_description">Product image</string>
 </resources>
