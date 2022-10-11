@@ -1,0 +1,52 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+}
+
+android {
+    compileSdk 32
+
+    defaultConfig {
+        minSdk 26
+        targetSdk 32
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+kapt {
+    correctErrorTypes true
+}
+
+dependencies {
+    implementation 'androidx.core:core-ktx:1.7.0'
+    /** Dagger hilt */
+    implementation "com.google.dagger:hilt-android:$dagger_version"
+    kapt "com.google.dagger:hilt-compiler:$dagger_version"
+    kapt "androidx.hilt:hilt-compiler:$hilt_compiler_version"
+    /** Timber */
+    implementation "com.jakewharton.timber:timber:5.0.1"
+    /** Retrofit */
+    implementation "com.squareup.retrofit2:retrofit:2.9.0"
+    /** Lifecycle */
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.4.1'
+    /** App center*/
+    implementation "com.microsoft.appcenter:appcenter-crashes:${appCenter_version}"
+}
