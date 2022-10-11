@@ -27,7 +27,7 @@ class HomeViewModel @Inject constructor(
     private val _homeUiState: MutableStateFlow<HomeUiState> = MutableStateFlow(HomeUiState())
     val homeUiState: StateFlow<HomeUiState> get() = _homeUiState.asStateFlow()
 
-    val searchQuery: MutableState<String> = mutableStateOf("")
+    val searchQuery: MutableState<String> = mutableStateOf("motorola")
 
     fun searchProducts(query: String) {
         _homeUiState.update { currentState ->
@@ -79,9 +79,5 @@ class HomeViewModel @Inject constructor(
 
     fun clearQuery() {
         searchQuery.value = String()
-    }
-
-    init {
-        searchProducts("motorola")
     }
 }

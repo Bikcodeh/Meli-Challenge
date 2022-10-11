@@ -41,7 +41,6 @@ import com.bikcodeh.melichallenge.ui.screens.home.HomeDefaults.EMPTY_PRODUCTS_LO
 import com.bikcodeh.melichallenge.ui.screens.home.HomeDefaults.RADIUS_SEARCH
 import com.bikcodeh.melichallenge.ui.screens.home.HomeDefaults.SEARCH_ITEM_IMAGE_SIZE
 import com.bikcodeh.melichallenge.ui.theme.*
-import com.bikcodeh.melichallenge.ui.util.extension.fixHttp
 import com.bikcodeh.melichallenge.util.Util
 import com.bikcodeh.mercadolibreapp.ui.component.Loading
 
@@ -53,7 +52,8 @@ fun HomeContent(
     onCloseSearch: () -> Unit,
     onSearch: (String) -> Unit,
     onProductClick: (product: Product) -> Unit,
-    homeUiState: HomeUiState
+    homeUiState: HomeUiState,
+    onRefresh: () -> Unit
 ) {
     Column(modifier = Modifier.fillMaxSize()) {
         Search(
@@ -68,7 +68,7 @@ fun HomeContent(
         }
 
         homeUiState.error?.let { error ->
-            ErrorScreen(error = error, onRefresh = { })
+            ErrorScreen(error = error, onRefresh = onRefresh)
         }
         homeUiState.products?.let { products ->
             if (products.isEmpty()) {

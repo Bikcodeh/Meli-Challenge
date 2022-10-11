@@ -71,6 +71,7 @@ dependencies {
     /** Lifecycle */
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1'
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.4.1'
+    implementation "androidx.lifecycle:lifecycle-runtime-compose:2.6.0-alpha02"
     /** App center */
     implementation "com.microsoft.appcenter:appcenter-analytics:${appCenter_version}"
     implementation "com.microsoft.appcenter:appcenter-crashes:${appCenter_version}"

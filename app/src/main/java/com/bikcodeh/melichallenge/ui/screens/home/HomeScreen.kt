@@ -2,17 +2,21 @@ package com.bikcodeh.melichallenge.ui.screens.home
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.hilt.navigation.compose.hiltViewModel
-import com.bikcodeh.melichallenge.ui.util.extension.collectAsStateWithLifecycle
-import com.bikcodeh.melichallenge.ui.util.extension.rememberStateWithLifecycle
+import androidx.lifecycle.compose.ExperimentalLifecycleComposeApi
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 
+@OptIn(ExperimentalLifecycleComposeApi::class)
 @Composable
 fun HomeScreen(homeViewModel: HomeViewModel) {
 
-    val state by rememberStateWithLifecycle(stateFlow = homeViewModel.homeUiState)
+    val state by homeViewModel.homeUiState.collectAsStateWithLifecycle()
     val query by homeViewModel.searchQuery
+
+    LaunchedEffect(key1 = Unit) {
+        if (state.products == null)
+            homeViewModel.searchProducts(query)
+    }
 
     HomeContent(
         text = query,
@@ -21,6 +25,7 @@ fun HomeScreen(homeViewModel: HomeViewModel) {
         onCloseSearch = { },
         onSearch = { homeViewModel.searchProducts(it) },
         onProductClick = {},
-        homeUiState = state
+        homeUiState = state,
+        onRefresh = { homeViewModel.searchProducts(query) }
     )
 }
