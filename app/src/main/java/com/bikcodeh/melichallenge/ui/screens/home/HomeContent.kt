@@ -22,12 +22,15 @@ import androidx.compose.ui.focus.FocusDirection
 import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
+import coil.compose.AsyncImage
+import coil.request.ImageRequest
 import com.airbnb.lottie.compose.LottieAnimation
 import com.airbnb.lottie.compose.LottieCompositionSpec
 import com.airbnb.lottie.compose.rememberLottieComposition
@@ -38,9 +41,9 @@ import com.bikcodeh.melichallenge.ui.screens.home.HomeDefaults.EMPTY_PRODUCTS_LO
 import com.bikcodeh.melichallenge.ui.screens.home.HomeDefaults.RADIUS_SEARCH
 import com.bikcodeh.melichallenge.ui.screens.home.HomeDefaults.SEARCH_ITEM_IMAGE_SIZE
 import com.bikcodeh.melichallenge.ui.theme.*
+import com.bikcodeh.melichallenge.ui.util.extension.fixHttp
 import com.bikcodeh.melichallenge.util.Util
 import com.bikcodeh.mercadolibreapp.ui.component.Loading
-import com.skydoves.landscapist.coil.CoilImage
 
 @Composable
 fun HomeContent(
@@ -50,9 +53,7 @@ fun HomeContent(
     onCloseSearch: () -> Unit,
     onSearch: (String) -> Unit,
     onProductClick: (product: Product) -> Unit,
-    homeUiState: HomeUiState,
-    refreshState: Boolean,
-    onRefresh: () -> Unit
+    homeUiState: HomeUiState
 ) {
     Column(modifier = Modifier.fillMaxSize()) {
         Search(
@@ -187,11 +188,16 @@ fun SearchItem(product: Product, onProductClick: (product: Product) -> Unit) {
         Card(
             modifier = Modifier.size(SEARCH_ITEM_IMAGE_SIZE)
         ) {
-            CoilImage(
-                product.thumbnail,
-                placeHolder = painterResource(id = R.drawable.ic_image),
-                error = painterResource(id = R.drawable.ic_broken_image),
-                contentScale = ContentScale.Crop
+            AsyncImage(
+                model = ImageRequest.Builder(LocalContext.current)
+                    .data(product.thumbnail)
+                    .crossfade(true)
+                    .build(),
+                placeholder = painterResource(R.drawable.ic_image),
+                error = painterResource(R.drawable.ic_broken_image),
+                contentDescription = stringResource(R.string.image_description),
+                contentScale = ContentScale.Fit,
+                modifier = Modifier.fillMaxSize()
             )
         }
         Column(

@@ -80,4 +80,8 @@ class HomeViewModel @Inject constructor(
     fun clearQuery() {
         searchQuery.value = String()
     }
+
+    init {
+        searchProducts("motorola")
+    }
 }
