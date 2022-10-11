@@ -3,6 +3,7 @@ package com.bikcodeh.melichallenge.ui.screens.home
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
@@ -32,17 +33,56 @@ import com.airbnb.lottie.compose.LottieCompositionSpec
 import com.airbnb.lottie.compose.rememberLottieComposition
 import com.bikcodeh.melichallenge.R
 import com.bikcodeh.melichallenge.domain.model.Product
+import com.bikcodeh.melichallenge.ui.component.ErrorScreen
 import com.bikcodeh.melichallenge.ui.screens.home.HomeDefaults.EMPTY_PRODUCTS_LOTTIE_SIZE
 import com.bikcodeh.melichallenge.ui.screens.home.HomeDefaults.RADIUS_SEARCH
 import com.bikcodeh.melichallenge.ui.screens.home.HomeDefaults.SEARCH_ITEM_IMAGE_SIZE
 import com.bikcodeh.melichallenge.ui.theme.*
 import com.bikcodeh.melichallenge.util.Util
+import com.bikcodeh.mercadolibreapp.ui.component.Loading
 import com.skydoves.landscapist.coil.CoilImage
 
 @Composable
 fun HomeContent(
+    text: String,
+    onTextChange: (String) -> Unit,
+    onClearSearch: (String) -> Unit,
+    onCloseSearch: () -> Unit,
+    onSearch: (String) -> Unit,
+    onProductClick: (product: Product) -> Unit,
+    homeUiState: HomeUiState,
+    refreshState: Boolean,
+    onRefresh: () -> Unit
 ) {
+    Column(modifier = Modifier.fillMaxSize()) {
+        Search(
+            text = text,
+            onTextChange = onTextChange,
+            onClearSearch = onClearSearch,
+            onSearch = onSearch,
+            onCloseSearch = onCloseSearch
+        )
+        if (homeUiState.isLoading) {
+            Loading()
+        }
 
+        homeUiState.error?.let { error ->
+            ErrorScreen(error = error, onRefresh = { })
+        }
+        homeUiState.products?.let { products ->
+            if (products.isEmpty()) {
+                EmptyProducts()
+            } else {
+                LazyColumn() {
+                    items(products.count()) { index ->
+                        SearchItem(product = products[index], onProductClick)
+                        if (index != products.count() - 1)
+                            Divider(color = Color.LightGray)
+                    }
+                }
+            }
+        }
+    }
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
