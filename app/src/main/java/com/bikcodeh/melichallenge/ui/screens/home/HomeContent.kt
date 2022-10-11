@@ -70,19 +70,18 @@ fun HomeContent(
         homeUiState.error?.let { error ->
             ErrorScreen(error = error, onRefresh = onRefresh)
         }
-        homeUiState.products?.let { products ->
-            if (products.isEmpty()) {
-                EmptyProducts()
-            } else {
-                LazyColumn() {
-                    items(products.count()) { index ->
-                        SearchItem(product = products[index], onProductClick)
-                        if (index != products.count() - 1)
-                            Divider(color = Color.LightGray)
-                    }
+        if (homeUiState.products.isNullOrEmpty()) {
+            EmptyProducts()
+        } else {
+            LazyColumn() {
+                items(homeUiState.products.count()) { index ->
+                    SearchItem(product = homeUiState.products[index], onProductClick)
+                    if (index != homeUiState.products.count() - 1)
+                        Divider(color = Color.LightGray)
                 }
             }
         }
+
     }
 }
 
