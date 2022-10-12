@@ -6,6 +6,7 @@ import com.bikcodeh.melichallenge.util.extension.encode
 
 sealed class Screens(val route: String) {
     object Home : Screens("home_screen")
+    object Splash : Screens("splash_screen")
     object Detail : Screens("detail_screen/{item}") {
         const val NAV_ARG_KEY = "item"
         fun passItem(item: Product): String {
