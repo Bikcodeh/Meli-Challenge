@@ -1,6 +1,7 @@
 package com.bikcodeh.melichallenge.domain.di
 
 import com.bikcodeh.melichallenge.domain.repository.MeliRepository
+import com.bikcodeh.melichallenge.domain.usecase.GetProductDescriptionUseCase
 import com.bikcodeh.melichallenge.domain.usecase.SearchProductsUseCase
 import dagger.Module
 import dagger.Provides
@@ -16,4 +17,9 @@ class UseCaseModule {
     @ViewModelScoped
     fun providesSearchProductsUC(meliRepository: MeliRepository): SearchProductsUseCase =
         SearchProductsUseCase(meliRepository)
+
+    @Provides
+    @ViewModelScoped
+    fun providesGetProductDescriptionsUC(meliRepository: MeliRepository): GetProductDescriptionUseCase =
+        GetProductDescriptionUseCase(meliRepository)
 }

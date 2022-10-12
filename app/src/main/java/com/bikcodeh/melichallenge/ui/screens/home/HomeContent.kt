@@ -1,5 +1,6 @@
 package com.bikcodeh.melichallenge.ui.screens.home
 
+import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -18,6 +19,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.scale
 import androidx.compose.ui.focus.FocusDirection
 import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.Color
@@ -29,6 +31,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.airbnb.lottie.compose.LottieAnimation
@@ -67,21 +71,25 @@ fun HomeContent(
             Loading()
         }
 
-        homeUiState.error?.let { error ->
-            ErrorScreen(error = error, onRefresh = onRefresh)
-        }
-        if (homeUiState.products.isNullOrEmpty()) {
-            EmptyProducts()
+        if (homeUiState.initialState) {
+            EmptyInitialState()
         } else {
-            LazyColumn() {
-                items(homeUiState.products.count()) { index ->
-                    SearchItem(product = homeUiState.products[index], onProductClick)
-                    if (index != homeUiState.products.count() - 1)
-                        Divider(color = Color.LightGray)
+            if (homeUiState.products.isNullOrEmpty()) {
+                EmptyProducts()
+            } else {
+                LazyColumn() {
+                    items(homeUiState.products.count()) { index ->
+                        SearchItem(product = homeUiState.products[index], onProductClick)
+                        if (index != homeUiState.products.count() - 1)
+                            Divider(color = Color.LightGray)
+                    }
                 }
             }
         }
 
+        homeUiState.error?.let { error ->
+            ErrorScreen(error = error, onRefresh = onRefresh)
+        }
     }
 }
 
@@ -178,6 +186,7 @@ fun Search(
 fun SearchItem(product: Product, onProductClick: (product: Product) -> Unit) {
     Row(
         modifier = Modifier
+            .background(MaterialTheme.colorScheme.backgroundColor)
             .clickable {
                 onProductClick(product)
             }
@@ -220,24 +229,6 @@ fun SearchItem(product: Product, onProductClick: (product: Product) -> Unit) {
 }
 
 @Composable
-fun EmptyInitialState() {
-    val composition by rememberLottieComposition(LottieCompositionSpec.RawRes(R.raw.search))
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(COMMON_PADDING),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        LottieAnimation(composition, modifier = Modifier.size(EMPTY_PRODUCTS_LOTTIE_SIZE))
-        Text(
-            text = stringResource(id = R.string.search_description),
-            color = MaterialTheme.colorScheme.textColor
-        )
-    }
-}
-
-@Composable
 fun EmptyProducts() {
     val composition by rememberLottieComposition(LottieCompositionSpec.RawRes(R.raw.empty))
     Column(
@@ -252,6 +243,25 @@ fun EmptyProducts() {
     }
 }
 
+@Composable
+fun EmptyInitialState() {
+    val composition by rememberLottieComposition(LottieCompositionSpec.RawRes(R.raw.search))
+    Column(
+        modifier = Modifier
+            .background(MaterialTheme.colorScheme.backgroundColor)
+            .fillMaxSize()
+            .padding(COMMON_PADDING),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        LottieAnimation(composition, modifier = Modifier.size(EMPTY_PRODUCTS_LOTTIE_SIZE))
+        androidx.compose.material.Text(
+            text = stringResource(id = R.string.search_description),
+            color = MaterialTheme.colorScheme.textColor
+        )
+    }
+}
+
 
 @Composable
 @Preview
@@ -262,6 +272,23 @@ fun SearchContentPreview() {
 @Composable
 @Preview(showBackground = true)
 fun SearchItemPreview() {
+    SearchItem(
+        product = Product(
+            id = "",
+            title = "Cables de alta tension",
+            price = 39999.0,
+            availableQuantity = 0,
+            soldQuantity = 0,
+            condition = "",
+            thumbnail = ""
+        ),
+        onProductClick = {}
+    )
+}
+
+@Composable
+@Preview(showBackground = true, uiMode = UI_MODE_NIGHT_YES)
+fun SearchItemPreviewDark() {
     SearchItem(
         product = Product(
             id = "",
