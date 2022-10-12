@@ -145,17 +145,16 @@ fun DetailContent(
                 color = MaterialTheme3.colorScheme.textColor,
                 fontWeight = FontWeight.Bold
             )
+            val messageDescription = if (!productDescriptionState.hasError) {
+                productDescriptionState.description
+            } else {
+                stringResource(id = R.string.error_description)
+            }
             Text(
-                text = productDescriptionState.description,
+                text = messageDescription,
                 color = MaterialTheme3.colorScheme.textColor,
                 modifier = Modifier.fillMaxWidth()
             )
-            Text(
-                text = stringResource(id = R.string.available_stock),
-                modifier = Modifier.padding(bottom = COMMON_MINIMUM_PADDING),
-                color = MaterialTheme3.colorScheme.textColor
-            )
-
         }
         ModalQuantityListSelector(
             modalBottomSheetState = bottomSheetState,
@@ -266,7 +265,9 @@ fun DetailContentPreview() {
             condition = "New",
             thumbnail = ""
         ),
-        productDescriptionState = ProductDescriptionUiState(),
+        productDescriptionState = ProductDescriptionUiState(
+            description = "Description message"
+        ),
         onBack = {}
     )
 }

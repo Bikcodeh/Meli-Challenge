@@ -16,7 +16,7 @@ fun DetailScreen(
     detailViewModel: DetailViewModel = hiltViewModel(),
     onBack: () -> Unit
 ) {
-    val productDescriptionState by detailViewModel.productDescription.collectAsStateWithLifecycle()
+    val productDescriptionState by detailViewModel.productDescriptionState.collectAsStateWithLifecycle()
 
     LaunchedEffect(key1 = product) {
         detailViewModel.getProductDescription(product.id)
