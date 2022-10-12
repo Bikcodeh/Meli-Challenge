@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">MeliChallenge</string>
-
+    <string name="back">Back</string>
     <!-- Home -->
     <string name="search">Search</string>
     <string name="search_description">What are you looking for?</string>
@@ -8,4 +8,19 @@
     <string name="search_in_meli">Search in Meli</string>
     <string name="empty_products">Ups! We didn\'t find anything.</string>
     <string name="image_description">Product image</string>
+
+    <!-- Detail -->
+    <string name="add_quantity">Add</string>
+    <string name="not_stock">Not stock</string>
+    <string name="available">(%1$s available)</string>
+    <string name="type_quantity">Type quantity</string>
+    <string name="more_than">More than %1$d</string>
+    <string name="choose_quantity">Choose quantity</string>
+    <string name="product_added">Product added!</string>
+    <string name="detail_title">Detail</string>
+    <string name="free_shipping">Free shipping</string>
+    <string name="available_stock">Available stock</string>
+    <string name="description">Description</string>
+    <string name="add_to_cart">Add to cart</string>
+    <string name="quantity">Quantity: %1$s</string>
 </resources>
