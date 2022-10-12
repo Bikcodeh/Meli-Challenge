@@ -16,6 +16,8 @@ val BitterLemon = Color(0XFFCCCC00)
 val CharlestonGreen = Color(0xFF2A2A2A)
 val GraniteGray = Color(0xFF656565)
 val ShinyShamrock = Color(0xFF55AF85)
+val CelticBlue = Color(0xFF2968C8)
+val AzureishWhite = Color(0xFFD9E7FA)
 
 val ColorScheme.statusBarColor
     @Composable
@@ -39,7 +41,7 @@ val ColorScheme.iconColor
 
 val ColorScheme.itemListSelected
     @Composable
-    get() = if (!isSystemInDarkTheme()) Color.LightGray else Color.DarkGray.copy(0.8f)
+    get() = if (!isSystemInDarkTheme()) Color.LightGray.copy(alpha = 0.2f) else Color.DarkGray.copy(0.8f)
 
 val ColorScheme.itemListNotSelected
     @Composable
@@ -47,7 +49,7 @@ val ColorScheme.itemListNotSelected
 
 val ColorScheme.buttonColor
     @Composable
-    get() = if (!isSystemInDarkTheme()) Color.Yellow else BitterLemon
+    get() = if (!isSystemInDarkTheme()) CelticBlue else BitterLemon
 
 val ColorScheme.buttonTexColor
     @Composable

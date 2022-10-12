@@ -9,9 +9,8 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowRight
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -28,8 +27,11 @@ import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.bikcodeh.melichallenge.R
 import com.bikcodeh.melichallenge.domain.model.Product
+import com.bikcodeh.melichallenge.ui.component.ModalQuantityListSelector
+import com.bikcodeh.melichallenge.ui.component.ModalQuantityTextField
 import com.bikcodeh.melichallenge.ui.theme.*
 import com.bikcodeh.melichallenge.util.Util
+import kotlinx.coroutines.launch
 import androidx.compose.material3.MaterialTheme as MaterialTheme3
 
 @ExperimentalMaterialApi
@@ -41,7 +43,12 @@ fun DetailContent(
 ) {
     val scaffoldState = rememberScaffoldState()
     val snackbarHostState = remember { SnackbarHostState() }
-
+    val bottomSheetState =
+        rememberModalBottomSheetState(initialValue = ModalBottomSheetValue.Hidden)
+    val bottomTextFieldSheetState =
+        rememberModalBottomSheetState(initialValue = ModalBottomSheetValue.Hidden)
+    val coroutineScope = rememberCoroutineScope()
+    var quantitySelected by rememberSaveable { mutableStateOf("1") }
 
     Scaffold(scaffoldState = scaffoldState,
         topBar = {
@@ -97,19 +104,34 @@ fun DetailContent(
             )
             QuantitySelection(
                 quantity = product.availableQuantity,
-                openModal = {},
-                quantitySelected = "1"
+                openModal = {
+                    coroutineScope.launch {
+                        bottomSheetState.show()
+                    }
+                },
+                quantitySelected = quantitySelected
             )
 
             Button(
-                onClick = {
-                },
+                onClick = {},
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(vertical = COMMON_PADDING),
+                    .padding(top = COMMON_PADDING),
                 colors = ButtonDefaults.buttonColors(
-                    backgroundColor = Color.Yellow,
-                    contentColor = MaterialTheme3.colorScheme.buttonTexColor
+                    backgroundColor = CelticBlue,
+                    contentColor = Color.White
+                )
+            ) {
+                Text(text = stringResource(id = R.string.buy_now))
+            }
+            Button(
+                onClick = {},
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(bottom = COMMON_PADDING),
+                colors = ButtonDefaults.buttonColors(
+                    backgroundColor = AzureishWhite,
+                    contentColor = CelticBlue
                 )
             ) {
                 Text(text = stringResource(id = R.string.add_to_cart))
@@ -119,7 +141,9 @@ fun DetailContent(
             )
             Text(
                 text = stringResource(id = R.string.description),
-                fontSize = MaterialTheme.typography.h6.fontSize
+                fontSize = MaterialTheme.typography.h6.fontSize,
+                color = MaterialTheme3.colorScheme.textColor,
+                fontWeight = FontWeight.Bold
             )
             Text(
                 text = productDescriptionState.description,
@@ -131,7 +155,41 @@ fun DetailContent(
                 modifier = Modifier.padding(bottom = COMMON_MINIMUM_PADDING),
                 color = MaterialTheme3.colorScheme.textColor
             )
+
         }
+        ModalQuantityListSelector(
+            modalBottomSheetState = bottomSheetState,
+            openTextFieldModal = {
+                coroutineScope.launch {
+                    coroutineScope.launch {
+                        bottomSheetState.hide()
+                        bottomTextFieldSheetState.show()
+                    }
+                }
+            },
+            onClose = {
+                coroutineScope.launch {
+                    bottomSheetState.hide()
+                }
+            },
+            quantity = product.availableQuantity,
+            onQuantityUpdate = {
+                quantitySelected = it.toString()
+            },
+            quantitySelected = quantitySelected.toInt()
+        )
+        ModalQuantityTextField(
+            modalBottomSheetState = bottomTextFieldSheetState,
+            onCloseModal = {
+                coroutineScope.launch {
+                    bottomTextFieldSheetState.hide()
+                }
+            },
+            available = product.availableQuantity,
+            updateQuantity = {
+                quantitySelected = it.toString()
+            }
+        )
     }
 }
 

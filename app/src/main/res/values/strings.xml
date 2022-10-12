@@ -15,6 +15,11 @@
     <string name="available">(%1$s available)</string>
     <string name="type_quantity">Type quantity</string>
     <string name="more_than">More than %1$d</string>
+    <string name="quantity_unit">More than %1$d</string>
+    <plurals name="quantity_unit">
+        <item quantity="one">%1$d unit</item>
+        <item quantity="other">%1$d units</item>
+    </plurals>
     <string name="choose_quantity">Choose quantity</string>
     <string name="product_added">Product added!</string>
     <string name="detail_title">Detail</string>
@@ -23,4 +28,5 @@
     <string name="description">Description</string>
     <string name="add_to_cart">Add to cart</string>
     <string name="quantity">Quantity: %1$s</string>
+    <string name="buy_now">Buy now</string>
 </resources>
