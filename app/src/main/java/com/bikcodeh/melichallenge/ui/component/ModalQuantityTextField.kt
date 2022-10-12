@@ -48,6 +48,7 @@ fun ModalQuantityTextField(
     }
 
     ModalBottomSheetLayout(
+        sheetBackgroundColor = androidx.compose.material3.MaterialTheme.colorScheme.backgroundColor,
         sheetState = modalBottomSheetState,
         sheetShape = RoundedCornerShape(topStart = COMMON_PADDING, topEnd = COMMON_PADDING),
         sheetContent = {
@@ -61,7 +62,8 @@ fun ModalQuantityTextField(
                 ) {
                     Text(
                         text = stringResource(id = R.string.choose_quantity),
-                        modifier = Modifier.weight(8f)
+                        modifier = Modifier.weight(8f),
+                        color = MaterialTheme3.colorScheme.textColor
                     )
                     IconButton(onClick = {
                         quantityTextField = ""
@@ -104,13 +106,21 @@ fun ModalQuantityTextField(
                         }
                     },
                     placeholder = {
-                        Text(text = stringResource(id = R.string.type_quantity))
+                        Text(
+                            text = stringResource(id = R.string.type_quantity),
+                            color = MaterialTheme3.colorScheme.textColor,
+                        )
                     }, singleLine = true,
                     maxLines = 1,
                     keyboardOptions = KeyboardOptions(
                         keyboardType = KeyboardType.Number
                     ),
-                    isError = hasError
+                    isError = hasError,
+                    colors = TextFieldDefaults.textFieldColors(
+                        textColor = MaterialTheme3.colorScheme.textColor,
+                        cursorColor = MaterialTheme3.colorScheme.textColor,
+                        focusedIndicatorColor = MaterialTheme3.colorScheme.textColor
+                    )
                 )
                 if (hasError) {
                     Text(

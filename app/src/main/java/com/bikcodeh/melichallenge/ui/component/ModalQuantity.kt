@@ -33,6 +33,7 @@ fun ModalQuantityListSelector(
     quantitySelected: Int
 ) {
     ModalBottomSheetLayout(
+        sheetBackgroundColor = MaterialTheme.colorScheme.backgroundColor,
         sheetState = modalBottomSheetState,
         sheetShape = RoundedCornerShape(topStart = COMMON_PADDING, topEnd = COMMON_PADDING),
         sheetContent = {
@@ -45,7 +46,8 @@ fun ModalQuantityListSelector(
             ) {
                 Text(
                     text = stringResource(id = R.string.choose_quantity),
-                    modifier = Modifier.weight(8f)
+                    modifier = Modifier.weight(8f),
+                    color = MaterialTheme.colorScheme.textColor,
                 )
                 IconButton(onClick = { onClose() }, modifier = Modifier.weight(1f)) {
                     Icon(
@@ -76,7 +78,8 @@ fun ModalQuantityListSelector(
                                 .fillMaxWidth()
                                 .padding(vertical = PADDING_ITEM_MODAL),
                             textAlign = TextAlign.Center,
-                            fontStyle = MaterialTheme.typography.bodyMedium.fontStyle
+                            fontStyle = MaterialTheme.typography.bodyMedium.fontStyle,
+                            color = MaterialTheme.colorScheme.textColor,
                         )
                         Divider()
                         if (it == 3) {
@@ -95,7 +98,8 @@ fun ModalQuantityListSelector(
                                     .background(colorMoreThan)
                                     .fillMaxWidth()
                                     .padding(COMMON_MINIMUM_PADDING),
-                                textAlign = TextAlign.Center
+                                textAlign = TextAlign.Center,
+                                color = MaterialTheme.colorScheme.textColor
                             )
                         }
                     }
@@ -117,7 +121,8 @@ fun ModalQuantityListSelector(
                             }
                             .fillMaxWidth()
                             .padding(vertical = COMMON_MINIMUM_PADDING),
-                        textAlign = TextAlign.Center
+                        textAlign = TextAlign.Center,
+                        color = MaterialTheme.colorScheme.textColor
                     )
                     Divider()
                 }
