@@ -11,6 +11,7 @@ import com.bikcodeh.melichallenge.data.util.Util.fromJson
 import com.bikcodeh.melichallenge.domain.model.Product
 import com.bikcodeh.melichallenge.ui.screens.detail.DetailScreen
 import com.bikcodeh.melichallenge.ui.screens.home.HomeScreen
+import com.bikcodeh.melichallenge.ui.screens.splash.SplashScreen
 import com.bikcodeh.melichallenge.util.extension.decode
 
 @ExperimentalMaterialApi
@@ -20,13 +21,25 @@ fun MeliNavigation(
 ) {
     NavHost(
         navController = navController,
-        startDestination = Screens.Home.route
+        startDestination = Screens.Splash.route
     ) {
         composable(route = Screens.Home.route) {
             HomeScreen(
                 navigateToDetail = {
                     navController.navigate(Screens.Detail.passItem(it))
                 })
+        }
+
+        composable(route = Screens.Splash.route) {
+            SplashScreen(
+                navigateToHome = {
+                    navController.navigate(Screens.Home.route) {
+                        popUpTo(Screens.Splash.route)  {
+                            inclusive = true
+                        }
+                    }
+                }
+            )
         }
 
         composable(
