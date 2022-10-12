@@ -6,14 +6,12 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.stringResource
@@ -94,11 +92,12 @@ fun ModalQuantityTextField(
                         ),
                     value = quantityTextField,
                     onValueChange = { value ->
-                        if (value.matches("^\\d+\$".toRegex()) && value.trim().length in 1..5) {
+                        val isValueValid = value.matches("^\\d+\$".toRegex())
+                        if (isValueValid && value.trim().length in 1..5) {
                             quantityTextField = value
                             enabledButton = value.toInt() <= available
                         }
-                        if (value.isNotEmpty()) {
+                        if (value.isNotEmpty() && isValueValid) {
                             hasError = value.toInt() > available
                         }
                         if (value.trim().isEmpty()) {
