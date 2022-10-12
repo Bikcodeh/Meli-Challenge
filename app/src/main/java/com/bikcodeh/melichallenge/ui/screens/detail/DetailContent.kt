@@ -46,7 +46,7 @@ fun DetailContent(
     Scaffold(scaffoldState = scaffoldState,
         topBar = {
             DetailTopBar(onBack)
-        }) { _ ->
+        }) { padding ->
         Column(
             modifier = Modifier
                 .fillMaxSize()
