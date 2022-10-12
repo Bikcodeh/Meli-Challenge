@@ -14,14 +14,8 @@ fun HomeScreen(
     homeViewModel: HomeViewModel = hiltViewModel(),
     navigateToDetail: (product: Product) -> Unit
 ) {
-
     val state by homeViewModel.homeUiState.collectAsStateWithLifecycle()
     val query by homeViewModel.searchQuery
-
-    LaunchedEffect(key1 = Unit) {
-        if (state.products == null)
-            homeViewModel.searchProducts(query)
-    }
 
     HomeContent(
         text = query,

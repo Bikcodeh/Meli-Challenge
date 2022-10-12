@@ -71,21 +71,25 @@ fun HomeContent(
             Loading()
         }
 
-        homeUiState.error?.let { error ->
-            ErrorScreen(error = error, onRefresh = onRefresh)
-        }
-        if (homeUiState.products.isNullOrEmpty()) {
-            EmptyProducts()
+        if (homeUiState.initialState) {
+            EmptyInitialState()
         } else {
-            LazyColumn() {
-                items(homeUiState.products.count()) { index ->
-                    SearchItem(product = homeUiState.products[index], onProductClick)
-                    if (index != homeUiState.products.count() - 1)
-                        Divider(color = Color.LightGray)
+            if (homeUiState.products.isNullOrEmpty()) {
+                EmptyProducts()
+            } else {
+                LazyColumn() {
+                    items(homeUiState.products.count()) { index ->
+                        SearchItem(product = homeUiState.products[index], onProductClick)
+                        if (index != homeUiState.products.count() - 1)
+                            Divider(color = Color.LightGray)
+                    }
                 }
             }
         }
 
+        homeUiState.error?.let { error ->
+            ErrorScreen(error = error, onRefresh = onRefresh)
+        }
     }
 }
 
@@ -236,6 +240,25 @@ fun EmptyProducts() {
     ) {
         LottieAnimation(composition, modifier = Modifier.size(EMPTY_PRODUCTS_LOTTIE_SIZE))
         Text(text = stringResource(id = R.string.empty_products))
+    }
+}
+
+@Composable
+fun EmptyInitialState() {
+    val composition by rememberLottieComposition(LottieCompositionSpec.RawRes(R.raw.search))
+    Column(
+        modifier = Modifier
+            .background(MaterialTheme.colorScheme.backgroundColor)
+            .fillMaxSize()
+            .padding(COMMON_PADDING),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        LottieAnimation(composition, modifier = Modifier.size(EMPTY_PRODUCTS_LOTTIE_SIZE))
+        androidx.compose.material.Text(
+            text = stringResource(id = R.string.search_description),
+            color = MaterialTheme.colorScheme.textColor
+        )
     }
 }
 

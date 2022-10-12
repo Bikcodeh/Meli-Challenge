@@ -27,14 +27,15 @@ class HomeViewModel @Inject constructor(
     private val _homeUiState: MutableStateFlow<HomeUiState> = MutableStateFlow(HomeUiState())
     val homeUiState: StateFlow<HomeUiState> get() = _homeUiState.asStateFlow()
 
-    val searchQuery: MutableState<String> = mutableStateOf("motorola")
+    val searchQuery: MutableState<String> = mutableStateOf("")
 
     fun searchProducts(query: String) {
         _homeUiState.update { currentState ->
             currentState.copy(
                 isLoading = true,
                 products = null,
-                error = null
+                error = null,
+                initialState = false
             )
         }
         viewModelScope.launch(dispatcher) {
@@ -46,6 +47,7 @@ class HomeViewModel @Inject constructor(
                                 isLoading = false,
                                 products = it,
                                 error = null,
+                                initialState = false
                             )
                         }
                     },
@@ -55,7 +57,9 @@ class HomeViewModel @Inject constructor(
                             currentState.copy(
                                 isLoading = false,
                                 error = error,
-                                products = null
+                                products = null,
+                                initialState = false
+
                             )
                         }
                     },
@@ -65,7 +69,8 @@ class HomeViewModel @Inject constructor(
                             currentState.copy(
                                 isLoading = false,
                                 error = error,
-                                products = null
+                                products = null,
+                                initialState = false
                             )
                         }
                     }

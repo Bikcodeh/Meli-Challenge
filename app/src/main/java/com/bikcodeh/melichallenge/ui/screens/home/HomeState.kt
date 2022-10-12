@@ -7,4 +7,5 @@ data class HomeUiState(
     val isLoading: Boolean = false,
     val products: List<Product>? = null,
     val error: BaseViewModel.Error? = null,
+    val initialState: Boolean = true
 )
