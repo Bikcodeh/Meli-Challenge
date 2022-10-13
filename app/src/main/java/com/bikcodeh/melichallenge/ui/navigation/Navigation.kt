@@ -7,7 +7,7 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
-import com.bikcodeh.melichallenge.data.util.Util.fromJson
+import com.bikcodeh.melichallenge.data.util.Util
 import com.bikcodeh.melichallenge.domain.model.Product
 import com.bikcodeh.melichallenge.ui.screens.detail.DetailScreen
 import com.bikcodeh.melichallenge.ui.screens.home.HomeScreen
@@ -50,7 +50,7 @@ fun MeliNavigation(
         ) { backStackEntry ->
             val item = backStackEntry.arguments?.getString(Screens.Detail.NAV_ARG_KEY)
             item?.decode()?.let {
-                fromJson<Product>(it)?.run {
+                Util.fromJson<Product>(it)?.run {
                     DetailScreen(onBack = { navController.popBackStack() }, product = this)
                 }
             }

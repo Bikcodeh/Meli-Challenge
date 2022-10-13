@@ -16,6 +16,7 @@ class UtilTest {
         thumbnail = "image",
         quantity = 1
     )
+
     private val productJson = """
             {"id":"1","title":"test","price":2.0,"availableQuantity":2,"soldQuantity":5,"condition":"new","thumbnail":"image","quantity":1}
         """.trimIndent()
