@@ -39,9 +39,9 @@ class StringKtTest {
     private val encodeData = """
            ewogICJkYXRhIjogW3sKICAgICJ0eXBlIjogImFydGljbGVzIiwKICAgICJpZCI6ICIxIiwKICAgICJhdHRyaWJ1dGVzIjogewogICAgICAidGl0bGUiOiAiSlNPTjpBUEkgcGFpbnRzIG15IGJpa2VzaGVkISIsCiAgICAgICJib2R5IjogIlRoZSBzaG9ydGVzdCBhcnRpY2xlLiBFdmVyLiIsCiAgICAgICJjcmVhdGVkIjogIjIwMTUtMDUtMjJUMTQ6NTY6MjkuMDAwWiIsCiAgICAgICJ1cGRhdGVkIjogIjIwMTUtMDUtMjJUMTQ6NTY6MjguMDAwWiIKICAgIH0sCiAgICAicmVsYXRpb25zaGlwcyI6IHsKICAgICAgImF1dGhvciI6IHsKICAgICAgICAiZGF0YSI6IHsiaWQiOiAiNDIiLCAidHlwZSI6ICJwZW9wbGUifQogICAgICB9CiAgICB9CiAgfV0sCiAgImluY2x1ZGVkIjogWwogICAgewogICAgICAidHlwZSI6ICJwZW9wbGUiLAogICAgICAiaWQiOiAiNDIiLAogICAgICAiYXR0cmlidXRlcyI6IHsKICAgICAgICAibmFtZSI6ICJKb2huIiwKICAgICAgICAiYWdlIjogODAsCiAgICAgICAgImdlbmRlciI6ICJtYWxlIgogICAgICB9CiAgICB9CiAgXQp9
         """.trimIndent()
+
     @Test
     fun encode() {
-
         val result = data.encode()
         assertThat(result).isEqualTo(encodeData)
     }
