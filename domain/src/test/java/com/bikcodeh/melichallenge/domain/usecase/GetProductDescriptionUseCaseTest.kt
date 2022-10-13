@@ -39,7 +39,7 @@ class GetProductDescriptionUseCaseTest {
     }
 
     @Test
-    fun search_products_should_return_a_sucessfull_description() = runTest {
+    fun product_description_should_return_a_sucessfull_description() = runTest {
         /** Given */
         coEvery { meliRepository.getProductDescription(capture(slot)) } returns Result.Success(
             ProductDescription("test")
@@ -56,7 +56,7 @@ class GetProductDescriptionUseCaseTest {
     }
 
     @Test
-    fun search_products_should_return_a_sucessfull_empty_description() = runTest {
+    fun product_description_should_return_a_sucessfull_empty_description() = runTest {
         /** Given */
         coEvery { meliRepository.getProductDescription(capture(slot)) } returns Result.Success(
             ProductDescription("")
@@ -73,7 +73,7 @@ class GetProductDescriptionUseCaseTest {
     }
 
     @Test
-    fun search_products_should_return_a_error_result() = runTest {
+    fun product_description_should_return_a_error_result() = runTest {
         /** Given */
         coEvery { meliRepository.getProductDescription(capture(slot)) } returns Result.Error(
             401, "error"
@@ -91,7 +91,7 @@ class GetProductDescriptionUseCaseTest {
     }
 
     @Test
-    fun search_products_should_return_a_exception_result() = runTest {
+    fun product_description_should_return_a_exception_result() = runTest {
         /** Given */
         coEvery { meliRepository.getProductDescription(capture(slot)) } returns Result.Exception(
             UnknownHostException("error")
