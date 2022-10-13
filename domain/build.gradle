@@ -37,6 +37,7 @@ kapt {
 }
 
 dependencies {
+    implementation project(':core_test')
     implementation 'androidx.core:core-ktx:1.7.0'
     /** Dagger hilt */
     implementation "com.google.dagger:hilt-android:$dagger_version"

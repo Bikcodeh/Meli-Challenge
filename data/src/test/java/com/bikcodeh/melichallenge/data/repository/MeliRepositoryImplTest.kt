@@ -1,19 +1,24 @@
 package com.bikcodeh.melichallenge.data.repository
 
+import com.bikcodeh.melichallenge.core_test.util.CoroutineRule
 import com.bikcodeh.melichallenge.data.remote.response.ProductDTO
 import com.bikcodeh.melichallenge.data.remote.response.ProductDescriptionResponse
 import com.bikcodeh.melichallenge.data.remote.response.SearchResponse
 import com.bikcodeh.melichallenge.data.remote.service.MeliService
+import com.bikcodeh.melichallenge.domain.common.Result
 import com.bikcodeh.melichallenge.domain.repository.MeliRepository
-import com.bikcodeh.melichallenge.util.CoroutineRule
 import com.google.common.truth.Truth.assertThat
+import io.mockk.every
+import io.mockk.coEvery
+import io.mockk.mockk
+import io.mockk.verify
+import io.mockk.verifyAll
+import io.mockk.coVerify
+import io.mockk.slot
 import io.mockk.impl.annotations.RelaxedMockK
 import io.mockk.junit4.MockKRule
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
-import com.bikcodeh.melichallenge.domain.common.Result
-import io.mockk.*
-
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -71,6 +76,7 @@ class MeliRepositoryImplTest {
         assertThat((result).data.first().title).isEqualTo("test")
         assertThat((result).data.first().availableQuantity).isEqualTo(1)
     }
+
     @Test
     fun `getSearchedArticles should return a exception result)`() = runTest {
         /** Given */

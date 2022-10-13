@@ -1,4 +1,4 @@
-package com.bikcodeh.melichallenge.util
+package com.bikcodeh.melichallenge.core_test.util
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
