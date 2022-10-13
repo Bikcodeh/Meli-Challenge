@@ -2,8 +2,6 @@ package com.bikcodeh.melichallenge.ui.screens.detail
 
 import androidx.lifecycle.viewModelScope
 import com.bikcodeh.melichallenge.domain.common.fold
-import com.bikcodeh.melichallenge.domain.common.toError
-import com.bikcodeh.melichallenge.domain.common.validateHttpErrorCode
 import com.bikcodeh.melichallenge.domain.di.IoDispatcher
 import com.bikcodeh.melichallenge.domain.usecase.GetProductDescriptionUseCase
 import com.bikcodeh.melichallenge.ui.util.BaseViewModel

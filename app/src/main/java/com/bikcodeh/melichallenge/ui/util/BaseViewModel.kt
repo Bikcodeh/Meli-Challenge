@@ -18,7 +18,7 @@ open class BaseViewModel : ViewModel() {
                 displayTryAgainBtn = true
             )
             is ErrorDomain.Unknown -> Error(
-                errorMessage = RD.string.connectivity_error,
+                errorMessage = RD.string.unknown_error,
                 displayTryAgainBtn = false
             )
         }
