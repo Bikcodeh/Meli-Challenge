@@ -5,6 +5,9 @@ import androidx.lifecycle.ViewModel
 import com.bikcodeh.melichallenge.domain.R as RD
 import com.bikcodeh.melichallenge.domain.common.Error as ErrorDomain
 
+/**
+ * Class to avoid repeat code using handleError function in others view models
+ */
 open class BaseViewModel : ViewModel() {
 
     fun handleError(error: ErrorDomain): Error {
