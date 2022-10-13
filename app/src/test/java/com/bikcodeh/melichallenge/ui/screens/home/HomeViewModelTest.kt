@@ -136,7 +136,7 @@ class HomeViewModelTest {
     }
 
     @Test
-    fun `searchProducts should handle a error result`() = runTest {
+    fun `searchProducts should handle a error result (401)`() = runTest {
         /** Given */
         coEvery { searchProductsUseCase(capture(slot)) } returns Result.Error(
             401, "error"
@@ -166,7 +166,7 @@ class HomeViewModelTest {
     }
 
     @Test
-    fun `searchProducts should handle a  result`() = runTest {
+    fun `searchProducts should handle a exception result`() = runTest {
         /** Given */
         coEvery { searchProductsUseCase(capture(slot)) } returns Result.Exception(
             Exception()
@@ -187,7 +187,7 @@ class HomeViewModelTest {
         assertThat(results[2].products).isNull()
         assertThat(results[2].error).isNotNull()
         assertThat(results[2].error).isInstanceOf(BaseViewModel.Error::class.java)
-        assertThat(results[2].error?.errorMessage).isEqualTo(R.string.connectivity_error)
+        assertThat(results[2].error?.errorMessage).isEqualTo(R.string.unknown_error)
         assertThat(results[2].error?.displayTryAgainBtn).isFalse()
         assertThat(results[2].initialState).isFalse()
         assertThat(slot.captured).isEqualTo("car")
