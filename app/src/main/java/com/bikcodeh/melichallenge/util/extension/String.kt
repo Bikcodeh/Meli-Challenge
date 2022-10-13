@@ -1,12 +1,12 @@
 package com.bikcodeh.melichallenge.util.extension
 
-import java.net.URLDecoder
-import java.net.URLEncoder
+import java.util.Base64
 
-fun String.encode(charset: String = "UTF-8"): String {
-    return URLEncoder.encode(this, charset)
+fun String.encode(): String {
+    return Base64.getEncoder().encodeToString(this.toByteArray())
 }
 
-fun String.decode(charset: String = "UTF-8"): String {
-    return URLDecoder.decode(this, charset)
+fun String.decode(): String {
+    val data = Base64.getDecoder().decode(this)
+    return String(data)
 }
