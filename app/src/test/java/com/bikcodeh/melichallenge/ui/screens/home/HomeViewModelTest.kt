@@ -1,13 +1,22 @@
 package com.bikcodeh.melichallenge.ui.screens.home
 
 import com.bikcodeh.melichallenge.core_test.util.CoroutineRule
+import com.bikcodeh.melichallenge.domain.R
+import com.bikcodeh.melichallenge.domain.common.Result
+import com.bikcodeh.melichallenge.domain.model.Product
 import com.bikcodeh.melichallenge.domain.usecase.SearchProductsUseCase
+import com.bikcodeh.melichallenge.ui.util.BaseViewModel
 import com.google.common.truth.Truth.assertThat
+import io.mockk.coEvery
+import io.mockk.coVerify
 import io.mockk.impl.annotations.RelaxedMockK
 import io.mockk.junit4.MockKRule
 import io.mockk.slot
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.toList
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
+import kotlinx.coroutines.test.runTest
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -52,7 +61,138 @@ class HomeViewModelTest {
     }
 
     @Test
-    fun searchProducts() {
+    fun `searchProducts should return a successful list of products`() = runTest {
+        /** Given */
+        coEvery { searchProductsUseCase(capture(slot)) } returns Result.Success(
+            listOf(
+                Product(
+                    id = "1",
+                    title = "test",
+                    price = 2.0,
+                    availableQuantity = 7,
+                    soldQuantity = 2,
+                    condition = "new",
+                    thumbnail = "image",
+                    quantity = 1
+                )
+            )
+        )
+        val results = arrayListOf<HomeUiState>()
+        val job = launch(UnconfinedTestDispatcher()) {
+            homeViewModel.homeUiState.toList(results)
+        }
+        /** When */
+        homeViewModel.searchProducts("car")
+
+        /** Then */
+        assertThat(results[1].isLoading).isTrue()
+        assertThat(results[1].products).isNull()
+        assertThat(results[1].error).isNull()
+        assertThat(results[1].initialState).isFalse()
+        assertThat(results[2].isLoading).isFalse()
+        assertThat(results[2].products).isNotNull()
+        assertThat(results[2].products?.count()).isEqualTo(1)
+        assertThat(results[2].products?.first()?.id).isEqualTo("1")
+        assertThat(results[2].products?.first()?.title).isEqualTo("test")
+        assertThat(results[2].products?.first()?.price).isEqualTo(2.0)
+        assertThat(results[2].products?.first()?.availableQuantity).isEqualTo(7)
+        assertThat(results[2].products?.first()?.soldQuantity).isEqualTo(2)
+        assertThat(results[2].products?.first()?.condition).isEqualTo("new")
+        assertThat(results[2].products?.first()?.thumbnail).isEqualTo("image")
+        assertThat(results[2].products?.first()?.quantity).isEqualTo(1)
+        assertThat(results[2].error).isNull()
+        assertThat(results[2].initialState).isFalse()
+        assertThat(slot.captured).isEqualTo("car")
+        coVerify { searchProductsUseCase("car") }
+        job.cancel()
+    }
+
+    @Test
+    fun `searchProducts should return a successful empty list of products`() = runTest {
+        /** Given */
+        coEvery { searchProductsUseCase(capture(slot)) } returns Result.Success(
+            emptyList()
+        )
+        val results = arrayListOf<HomeUiState>()
+        val job = launch(UnconfinedTestDispatcher()) {
+            homeViewModel.homeUiState.toList(results)
+        }
+        /** When */
+        homeViewModel.searchProducts("car")
+
+        /** Then */
+        assertThat(results[1].isLoading).isTrue()
+        assertThat(results[1].products).isNull()
+        assertThat(results[1].error).isNull()
+        assertThat(results[1].initialState).isFalse()
+        assertThat(results[2].isLoading).isFalse()
+        assertThat(results[2].products).isNotNull()
+        assertThat(results[2].products?.count()).isEqualTo(0)
+        assertThat(results[2].error).isNull()
+        assertThat(results[2].initialState).isFalse()
+        assertThat(slot.captured).isEqualTo("car")
+        coVerify { searchProductsUseCase("car") }
+        job.cancel()
+    }
+
+    @Test
+    fun `searchProducts should handle a error result`() = runTest {
+        /** Given */
+        coEvery { searchProductsUseCase(capture(slot)) } returns Result.Error(
+            401, "error"
+        )
+        val results = arrayListOf<HomeUiState>()
+        val job = launch(UnconfinedTestDispatcher()) {
+            homeViewModel.homeUiState.toList(results)
+        }
+        /** When */
+        homeViewModel.searchProducts("car")
+
+        /** Then */
+        assertThat(results[1].isLoading).isTrue()
+        assertThat(results[1].products).isNull()
+        assertThat(results[1].error).isNull()
+        assertThat(results[1].initialState).isFalse()
+        assertThat(results[2].isLoading).isFalse()
+        assertThat(results[2].products).isNull()
+        assertThat(results[2].error).isNotNull()
+        assertThat(results[2].error).isInstanceOf(BaseViewModel.Error::class.java)
+        assertThat(results[2].error?.errorMessage).isEqualTo(R.string.unauthorized_error)
+        assertThat(results[2].error?.displayTryAgainBtn).isTrue()
+        assertThat(results[2].initialState).isFalse()
+        assertThat(slot.captured).isEqualTo("car")
+        coVerify { searchProductsUseCase("car") }
+        job.cancel()
+    }
+
+    @Test
+    fun `searchProducts should handle a  result`() = runTest {
+        /** Given */
+        coEvery { searchProductsUseCase(capture(slot)) } returns Result.Exception(
+            Exception()
+        )
+        val results = arrayListOf<HomeUiState>()
+        val job = launch(UnconfinedTestDispatcher()) {
+            homeViewModel.homeUiState.toList(results)
+        }
+        /** When */
+        homeViewModel.searchProducts("car")
+
+        /** Then */
+        assertThat(results[1].isLoading).isTrue()
+        assertThat(results[1].products).isNull()
+        assertThat(results[1].error).isNull()
+        assertThat(results[1].initialState).isFalse()
+        assertThat(results[2].isLoading).isFalse()
+        assertThat(results[2].products).isNull()
+        assertThat(results[2].error).isNotNull()
+        assertThat(results[2].error).isInstanceOf(BaseViewModel.Error::class.java)
+        assertThat(results[2].error?.errorMessage).isEqualTo(R.string.connectivity_error)
+        assertThat(results[2].error?.displayTryAgainBtn).isFalse()
+        assertThat(results[2].initialState).isFalse()
+        assertThat(slot.captured).isEqualTo("car")
+        coVerify { searchProductsUseCase("car") }
+        job.cancel()
     }
 
     @Test
