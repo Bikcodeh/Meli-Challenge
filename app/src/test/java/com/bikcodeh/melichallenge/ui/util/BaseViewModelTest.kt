@@ -40,6 +40,14 @@ class BaseViewModelTest {
     }
 
     @Test
+    fun `handleError should handle an internet connection error`() {
+        val result = baseViewModel.handleError(Error.InternetConnection)
+        assertThat(result.displayTryAgainBtn).isTrue()
+        assertThat(result.errorMessage).isNotNull()
+        assertThat(result.errorMessage).isEqualTo(RD.string.internet_error)
+    }
+
+    @Test
     fun `error class with default values`() {
         val result = BaseViewModel.Error()
         assertThat(result.displayTryAgainBtn).isFalse()

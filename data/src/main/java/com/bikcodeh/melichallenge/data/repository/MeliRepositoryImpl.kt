@@ -9,10 +9,19 @@ import com.bikcodeh.melichallenge.domain.model.ProductDescription
 import com.bikcodeh.melichallenge.domain.repository.MeliRepository
 import javax.inject.Inject
 
+/**
+ * Class to handle requests to get products and product description
+ * @param meliService: service that allow us to get the information from a remote service
+ */
 class MeliRepositoryImpl @Inject constructor(
     private val meliService: MeliService
 ) : MeliRepository {
 
+    /**
+     * Get a list of products fetching by a query string
+     * @param query: word or phrase to fetch products
+     * @return Result<List<Product>>: returns a Result wrapper to handle the products or some error
+     */
     override suspend fun searchProducts(query: String): Result<List<Product>> {
         val response = makeSafeRequest { meliService.searchProducts(query) }
 
@@ -29,6 +38,11 @@ class MeliRepositoryImpl @Inject constructor(
         )
     }
 
+    /**
+     * Get a product description fetching by a product id
+     * @param productId: product id from a specific product to fetch it's description
+     * @return Result<List<Product>>: returns a Result wrapper to handle the products or some error
+     */
     override suspend fun getProductDescription(productId: String): Result<ProductDescription> {
         val response = makeSafeRequest { meliService.getProductDescription(productId) }
 
