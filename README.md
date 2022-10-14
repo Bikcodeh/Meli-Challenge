@@ -12,11 +12,11 @@
 
 :runner: For run the app just clone the repository and execute the app on Android Studio.
 
-### Requirements to install the app
+### :bookmark_tabs: Requirements to install the app
 - Use phones with Android Api 26+
 - Having an internet connection
 
-##### This application was developed using Kotlin and uses the following components:
+##### :open_file_folder: This application was developed using Kotlin and uses the following components:
 - Jetpack compose
 - Coroutines
 - Clean architecture (Domain, Data, Presentation)
@@ -82,7 +82,7 @@
             - [**core_test**](com/bikcodeh/melichallenge/core_test)
                 - [**util**](com/bikcodeh/melichallenge/core_test/util)
 
-## Screenshots Light theme
+## :sun_with_face: Screenshots Light theme
  | Splash |     Home    |  Loading  |   Products    |  Detail |
  | :----: | :---------: | :-------: | :-----------: | :-----: |
  |<img src="https://raw.githubusercontent.com/Bikcodeh/Meli-Challenge/main/assets/screenshots/splash.png" align="left" height="300" width="1600">|<img src="https://raw.githubusercontent.com/Bikcodeh/Meli-Challenge/main/assets/screenshots/home.png" align="left" height="300" width="1600">|<img src="https://raw.githubusercontent.com/Bikcodeh/Meli-Challenge/main/assets/screenshots/loading.png" align="left" height="300" width="1600">|<img src="https://raw.githubusercontent.com/Bikcodeh/Meli-Challenge/main/assets/screenshots/searched.png" align="left" height="300" width="1600">|<img src="https://raw.githubusercontent.com/Bikcodeh/Meli-Challenge/main/assets/screenshots/detail.png" align="left" height="300" width="1600"> |
@@ -91,7 +91,7 @@
 | :-----------------:| :----------------------: | :----------------:| :----------------:|
 <img src="https://raw.githubusercontent.com/Bikcodeh/Meli-Challenge/main/assets/screenshots/detail_description.png" align="left" height="300" width="170">| <img src="https://raw.githubusercontent.com/Bikcodeh/Meli-Challenge/main/assets/screenshots/modal_quantity.png" align="left" height="300" width="170"> |  <img src="https://raw.githubusercontent.com/Bikcodeh/Meli-Challenge/main/assets/screenshots/modal_quantity_textfield.png" align="left" height="300" width="170"> | <img src="https://raw.githubusercontent.com/Bikcodeh/Meli-Challenge/main/assets/screenshots/error.png" align="left" height="300" width="170"> |
 
-## Screenshots Dark Mode
+## :new_moon_with_face: Screenshots Dark Mode
 
  | Splash |     Home    |  Loading  |   Products    |  Detail |
  | :----: | :---------: | :-------: | :-----------: | :-----: |
@@ -100,6 +100,19 @@
 | Detail Description | Detail quantity modal  |    Detail quantity textfiel modal  | Error  |
 | :----------------: |:----------------: |:--------------------------------: | :----------------: | 
 |<img src="https://raw.githubusercontent.com/Bikcodeh/Meli-Challenge/main/assets/screenshots/detail_description_dark.png" align="left" height="300" width="170">| <img src="https://raw.githubusercontent.com/Bikcodeh/Meli-Challenge/main/assets/screenshots/modal_quantity_dark.png" align="left" height="300" width="170"> |  <img src="https://raw.githubusercontent.com/Bikcodeh/Meli-Challenge/main/assets/screenshots/modal_quantity_textfield_dark.png" align="left" height="300" width="170"> | <img src="https://raw.githubusercontent.com/Bikcodeh/Meli-Challenge/main/assets/screenshots/error_dark.png" align="left" height="300" width="170"> |
+
+## :white_check_mark: Code coverage
+| BaseViewModel |     DetailViewModel    |  HomeViewModel  |   MeliRepository  |
+| :-----------: | :--------------------: | :-------------: | :---------------: | 
+|    <img src="https://raw.githubusercontent.com/Bikcodeh/Meli-Challenge/main/assets/coverage/baseviewmodel.png" align="left" height="300" width="170">           | <img src="https://raw.githubusercontent.com/Bikcodeh/Meli-Challenge/main/assets/coverage/detailviewmodel.png" align="left" height="300" width="170"> | <img src="https://raw.githubusercontent.com/Bikcodeh/Meli-Challenge/main/assets/coverage/homeviewmodel.png" align="left" height="300" width="170"> | <img src="https://raw.githubusercontent.com/Bikcodeh/Meli-Challenge/main/assets/coverage/meliRepository.png" align="left" height="300" width="170"> |
+
+| Product Description UC |     Search Products UC    | 
+| :-----------: | :--------------------: |
+|    <img src="https://raw.githubusercontent.com/Bikcodeh/Meli-Challenge/main/assets/coverage/product_descrptionUC.png" align="left" height="300" width="500">           | <img src="https://raw.githubusercontent.com/Bikcodeh/Meli-Challenge/main/assets/coverage/search_productsUC.png" align="left" height="300" width="500"> |  
+
+ | Currency Util  |   String extension  |
+ | :------------: | :-----------------: | 
+ | <img src="https://raw.githubusercontent.com/Bikcodeh/Meli-Challenge/main/assets/coverage/util_currencyformatter.png" align="left" height="300" width="500"> |  <img src="https://raw.githubusercontent.com/Bikcodeh/Meli-Challenge/main/assets/coverage/extension_string_encode_decode.png" align="left" height="300" width="500"> |
 
 ## :dart: Architecture
 
