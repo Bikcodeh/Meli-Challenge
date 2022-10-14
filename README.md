@@ -102,6 +102,7 @@
 |<img src="https://raw.githubusercontent.com/Bikcodeh/Meli-Challenge/main/assets/screenshots/detail_description_dark.png" align="left" height="300" width="170">| <img src="https://raw.githubusercontent.com/Bikcodeh/Meli-Challenge/main/assets/screenshots/modal_quantity_dark.png" align="left" height="300" width="170"> |  <img src="https://raw.githubusercontent.com/Bikcodeh/Meli-Challenge/main/assets/screenshots/modal_quantity_textfield_dark.png" align="left" height="300" width="170"> | <img src="https://raw.githubusercontent.com/Bikcodeh/Meli-Challenge/main/assets/screenshots/error_dark.png" align="left" height="300" width="170"> |
 
 ## :white_check_mark: Code coverage
+### Unit testing for layers Domain, data and app (Viewmodels and Util class) with 100% coverage.
 | BaseViewModel |     DetailViewModel    |  HomeViewModel  |   MeliRepository  |
 | :-----------: | :--------------------: | :-------------: | :---------------: | 
 |    <img src="https://raw.githubusercontent.com/Bikcodeh/Meli-Challenge/main/assets/coverage/baseviewmodel.png" align="left" height="300" width="170">           | <img src="https://raw.githubusercontent.com/Bikcodeh/Meli-Challenge/main/assets/coverage/detailviewmodel.png" align="left" height="300" width="170"> | <img src="https://raw.githubusercontent.com/Bikcodeh/Meli-Challenge/main/assets/coverage/homeviewmodel.png" align="left" height="300" width="170"> | <img src="https://raw.githubusercontent.com/Bikcodeh/Meli-Challenge/main/assets/coverage/meliRepository.png" align="left" height="300" width="170"> |
