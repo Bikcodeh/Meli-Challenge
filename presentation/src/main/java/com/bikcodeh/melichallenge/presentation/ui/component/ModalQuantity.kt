@@ -22,6 +22,9 @@ import androidx.compose.ui.text.style.TextAlign
 import com.bikcodeh.melichallenge.presentation.R
 import com.bikcodeh.melichallenge.presentation.ui.theme.*
 
+private const val MORE_THAN_3_ITEMS = 3
+private const val DEFAULT_TOTAL_ITEMS = 4
+
 @OptIn(ExperimentalComposeUiApi::class)
 @ExperimentalMaterialApi
 @Composable
@@ -59,21 +62,21 @@ fun ModalQuantityListSelector(
                 }
             }
             Divider()
-            if (quantity > 4) {
+            if (quantity > DEFAULT_TOTAL_ITEMS) {
                 run loop@{
-                    repeat(4) {
-
-                        val color = if ((it + 1) == quantitySelected) {
+                    repeat(DEFAULT_TOTAL_ITEMS) {
+                        val currentQuantity = it + 1
+                        val color = if (currentQuantity == quantitySelected) {
                             MaterialTheme.colorScheme.itemListSelected
                         } else {
                             MaterialTheme.colorScheme.itemListNotSelected
                         }
                         Text(
-                            text = pluralStringResource(R.plurals.quantity_unit, it + 1, it + 1),
+                            text = pluralStringResource(R.plurals.quantity_unit, currentQuantity, currentQuantity),
                             modifier = Modifier
                                 .background(color)
                                 .clickable {
-                                    onQuantityUpdate(it + 1)
+                                    onQuantityUpdate(currentQuantity)
                                     onClose()
                                 }
                                 .fillMaxWidth()
@@ -83,14 +86,14 @@ fun ModalQuantityListSelector(
                             color = MaterialTheme.colorScheme.textColor,
                         )
                         Divider()
-                        if (it == 3) {
-                            val colorMoreThan = if (quantitySelected >= 3) {
+                        if (currentQuantity == MORE_THAN_3_ITEMS) {
+                            val colorMoreThan = if (quantitySelected >= MORE_THAN_3_ITEMS) {
                                 MaterialTheme.colorScheme.itemListSelected
                             } else {
                                 MaterialTheme.colorScheme.itemListNotSelected
                             }
                             Text(
-                                text = stringResource(id = R.string.more_than, (it + 1)),
+                                text = stringResource(id = R.string.more_than, (currentQuantity)),
                                 modifier = Modifier
                                     .clickable {
                                         onClose()
@@ -107,17 +110,18 @@ fun ModalQuantityListSelector(
                 }
             } else {
                 repeat(quantity) {
-                    val color = if ((it + 1) == quantitySelected) {
+                    val currentQuantity = it + 1
+                    val color = if (currentQuantity == quantitySelected) {
                         MaterialTheme.colorScheme.itemListSelected
                     } else {
                         MaterialTheme.colorScheme.itemListNotSelected
                     }
                     Text(
-                        text = "${it + 1}",
+                        text = "$currentQuantity",
                         modifier = Modifier
                             .background(color)
                             .clickable {
-                                onQuantityUpdate(it + 1)
+                                onQuantityUpdate(currentQuantity)
                                 onClose()
                             }
                             .fillMaxWidth()
