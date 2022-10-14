@@ -1,0 +1,110 @@
+ext.deps = [:]
+def deps = [:]
+
+def compose_versions = [:]
+compose_versions.core_compose = "1.3.0-rc01"
+compose_versions.activity = "1.3.1"
+compose_versions.material3 = "1.0.0-beta03"
+compose_versions.material = "1.2.1"
+compose_versions.toolin_preview = "1.2.1"
+compose_versions.toolin_preview = "1.2.1"
+compose_versions.navigation = "2.5.0-rc02"
+compose_versions.constraint_layout = "1.0.1"
+compose_versions.system_ui_controller = "0.24.11-rc"
+compose_versions.lottie = "5.2.0"
+compose_versions.material_icons = "1.1.1"
+compose_versions.coil = "2.2.2"
+
+def compose = [:]
+compose.activity = "androidx.activity:activity-compose:$compose_versions.activity"
+compose.material3 = "androidx.compose.material3:material3:$compose_versions.material3"
+compose.material = "androidx.compose.material:material:$compose_versions.material"
+compose.toolin_preview = "androidx.compose.ui:ui-tooling-preview:$compose_versions.toolin_preview"
+compose.navigation = "androidx.navigation:navigation-compose:$compose_versions.navigation"
+compose.constraint_layout = "androidx.constraintlayout:constraintlayout-compose:$compose_versions.constraint_layout"
+compose.system_ui_controller = "com.google.accompanist:accompanist-systemuicontroller:$compose_versions.system_ui_controller"
+compose.lottie = "com.airbnb.android:lottie-compose:$compose_versions.lottie"
+compose.material_icons = "androidx.compose.material:material-icons-extended:$compose_versions.material_icons"
+compose.ui = "androidx.compose.ui:ui:$compose_versions.core_compose"
+compose.coil = "io.coil-kt:coil-compose:$compose_versions.coil"
+deps.compose = compose
+
+def dependenciesVersions = [:]
+
+dependenciesVersions.coreKtx = "1.7.0"
+dependenciesVersions.timber = "5.0.1"
+dependenciesVersions.appCenter = "4.1.0"
+dependenciesVersions.daggerHilt = "2.42"
+dependenciesVersions.hiltCompiler = "1.0.0"
+dependenciesVersions.lifecycle = "2.4.1"
+dependenciesVersions.lifecycleCompose = "2.6.0-alpha02"
+dependenciesVersions.moshi = "1.9.3"
+dependenciesVersions.moshiConverter = "2.9.0"
+dependenciesVersions.moshiConverter = "2.9.0"
+dependenciesVersions.okHttpLoginInterceptor = "4.9.3"
+dependenciesVersions.okHttp = "4.9.0"
+dependenciesVersions.retrofit = "2.9.0"
+
+deps.timber = "com.jakewharton.timber:timber:$dependenciesVersions.timber"
+deps.coreKtx = "androidx.core:core-ktx:$dependenciesVersions.coreKtx"
+
+def appCenter = [:]
+appCenter.analytics = "com.microsoft.appcenter:appcenter-analytics:$dependenciesVersions.appCenter"
+appCenter.crashes = "com.microsoft.appcenter:appcenter-crashes:$dependenciesVersions.appCenter"
+deps.appCenter = appCenter
+
+def daggerHilt = [:]
+daggerHilt.android = "com.google.dagger:hilt-android:$dependenciesVersions.daggerHilt"
+daggerHilt.navigation_compose = "androidx.hilt:hilt-navigation-compose:$dependenciesVersions.hiltCompiler"
+daggerHilt.compiler = "com.google.dagger:hilt-compiler:$dependenciesVersions.daggerHilt"
+daggerHilt.androidx_compiler = "androidx.hilt:hilt-compiler:$dependenciesVersions.hiltCompiler"
+deps.daggerHilt = daggerHilt
+
+def lifeCycle = [:]
+lifeCycle.viewmodel = "androidx.lifecycle:lifecycle-viewmodel-ktx:$dependenciesVersions.lifecycle"
+lifeCycle.runtime = "androidx.lifecycle:lifecycle-runtime-ktx:$dependenciesVersions.lifecycle"
+lifeCycle.runtime_compose = "androidx.lifecycle:lifecycle-runtime-compose:$dependenciesVersions.lifecycleCompose"
+deps.lifecycle = lifeCycle
+
+def retrofit = [:]
+retrofit.core = "com.squareup.retrofit2:retrofit:$dependenciesVersions.retrofit"
+deps.retrofit = retrofit
+
+def okHttp = [:]
+okHttp.logginInterceptor = "com.squareup.okhttp3:logging-interceptor:$dependenciesVersions.okHttpLoginInterceptor"
+okHttp.core = "com.squareup.okhttp3:okhttp:$dependenciesVersions.okHttp"
+deps.okHttp = okHttp
+
+def moshi = [:]
+moshi.kotlin = "com.squareup.moshi:moshi-kotlin:$dependenciesVersions.moshi"
+moshi.converter = "com.squareup.retrofit2:converter-moshi:$dependenciesVersions.moshiConverter"
+deps.moshi = moshi
+
+def build_versions = [:]
+build_versions.min_sdk = 26
+build_versions.compile_sdk = 33
+build_versions.target_sdk = 33
+build_versions.build_tools = "29.0.3"
+ext.build_versions = build_versions
+
+def test_versions = [:]
+test_versions.core_testing = "2.1.0"
+test_versions.junit = "4.13.2"
+test_versions.androidx_junit = "1.1.3"
+test_versions.espresso = "3.4.0"
+test_versions.truth = "1.1.3"
+test_versions.coroutines = "1.6.3"
+test_versions.mockk = "1.12.4"
+test_versions.canary_leak = "2.9.1"
+
+def test = [:]
+test.junit = "junit:junit:$test_versions.junit"
+test.androidx_junit = "androidx.test.ext:junit:$test_versions.androidx_junit"
+test.core_testing = "androidx.arch.core:core-testing:$test_versions.core_testing"
+test.truth = "com.google.truth:truth:$test_versions.truth"
+test.coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-test:$test_versions.coroutines"
+test.mockk = "io.mockk:mockk:$test_versions.mockk"
+test.mockk_jvm = "io.mockk:mockk:$test_versions.mockk"
+test.canary_leak = "com.squareup.leakcanary:leakcanary-android:$test_versions.canary_leak"
+deps.test = test
+ext.deps = deps

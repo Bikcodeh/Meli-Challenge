@@ -9,12 +9,12 @@ plugins {
 apply from: "$project.rootDir/jacoco.gradle"
 
 android {
-    compileSdk 33
+    compileSdk build_versions.compile_sdk
 
     defaultConfig {
         applicationId "com.bikcodeh.melichallenge"
-        minSdk 26
-        targetSdk 33
+        minSdk build_versions.min_sdk
+        targetSdk build_versions.target_sdk
         versionCode 1
         versionName "1.0"
 
@@ -60,56 +60,12 @@ kapt {
 }
 
 dependencies {
-
+    implementation project(":presentation")
     implementation project(":domain")
     implementation project(":data")
-    implementation project(":core_test")
-    implementation 'androidx.core:core-ktx:1.7.0'
-    implementation "androidx.compose.ui:ui:$compose_version"
-    implementation "androidx.compose.material3:material3:1.0.0-beta03"
-    implementation "androidx.compose.ui:ui-tooling-preview:1.2.1"
-    implementation 'androidx.activity:activity-compose:1.3.1'
-    /** Lifecycle */
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1'
-    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.4.1'
-    implementation "androidx.lifecycle:lifecycle-runtime-compose:2.6.0-alpha02"
-    /** App center */
-    implementation "com.microsoft.appcenter:appcenter-analytics:${appCenter_version}"
-    implementation "com.microsoft.appcenter:appcenter-crashes:${appCenter_version}"
-    /** Material icons */
-    implementation "androidx.compose.material:material-icons-extended:1.1.1"
-    /** Navigation */
-    implementation "androidx.navigation:navigation-compose:2.5.0-rc02"
     /** Dagger hilt */
-    implementation "com.google.dagger:hilt-android:$dagger_version"
-    implementation "androidx.hilt:hilt-navigation-compose:$hilt_compiler_version"
-    implementation 'androidx.compose.material:material:1.2.1'
-    kapt "com.google.dagger:hilt-compiler:$dagger_version"
-    kapt "androidx.hilt:hilt-compiler:$hilt_compiler_version"
-    /** Coil */
-    implementation "io.coil-kt:coil-compose:2.2.2"
-    /** Lottie compose */
-    implementation "com.airbnb.android:lottie-compose:5.2.0"
-    /** Constraint layout compose */
-    implementation "androidx.constraintlayout:constraintlayout-compose:1.0.1"
-    /** Accompanist */
-    implementation "com.google.accompanist:accompanist-systemuicontroller:0.24.11-rc"
-    implementation 'com.google.accompanist:accompanist-swiperefresh:0.24.11-rc'
-    /** Timber */
-    implementation "com.jakewharton.timber:timber:5.0.1"
-
-    /** Testing */
-    /** Core testing */
-    testImplementation "androidx.arch.core:core-testing:2.1.0"
-    /** Dagger hilt instrumented tests*/
-    androidTestImplementation  'com.google.dagger:hilt-android-testing:2.42'
-    kaptAndroidTest 'com.google.dagger:hilt-compiler:2.42'
-    /** Mock Web Server */
-    androidTestImplementation "com.squareup.okhttp3:mockwebserver:4.10.0"
-    testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
-    androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
-    debugImplementation "androidx.compose.ui:ui-tooling:$compose_version"
-    debugImplementation "androidx.compose.ui:ui-test-manifest:$compose_version"
+    implementation deps.daggerHilt.android
+    implementation deps.daggerHilt.navigation_compose
+    kapt deps.daggerHilt.compiler
+    kapt deps.daggerHilt.androidx_compiler
 }

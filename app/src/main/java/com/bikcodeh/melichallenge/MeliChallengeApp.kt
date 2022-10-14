@@ -1,7 +1,7 @@
 package com.bikcodeh.melichallenge
 
 import android.app.Application
-import com.bikcodeh.melichallenge.util.ReleaseTree
+import com.bikcodeh.melichallenge.presentation.util.ReleaseTree
 import com.microsoft.appcenter.AppCenter
 import com.microsoft.appcenter.analytics.Analytics
 import com.microsoft.appcenter.crashes.Crashes

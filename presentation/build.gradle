@@ -9,6 +9,7 @@ plugins {
 apply from: "$project.rootDir/jacoco.gradle"
 
 android {
+    namespace 'com.bikcodeh.melichallenge.presentation'
     compileSdk build_versions.compile_sdk
 
     defaultConfig {
@@ -32,7 +33,12 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-    namespace 'com.bikcodeh.melichallenge.domain'
+    buildFeatures {
+        compose true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion compose_version
+    }
 }
 
 kapt {
@@ -40,18 +46,38 @@ kapt {
 }
 
 dependencies {
+    implementation project(':domain')
+    implementation project(':data')
     implementation project(':core_test')
-    implementation deps.coreKtx
+
+    api deps.coreKtx
+    /** Compose */
+    implementation deps.compose.ui
+    api deps.compose.material3
+    api deps.compose.toolin_preview
+    api deps.compose.activity
+    api deps.compose.material
+    implementation deps.compose.material_icons
+    implementation  deps.compose.navigation
+    implementation  deps.compose.coil
+    implementation  deps.compose.lottie
+    implementation  deps.compose.constraint_layout
+    implementation  deps.compose.constraint_layout
+    api  deps.compose.system_ui_controller
+
     /** Dagger hilt */
     implementation deps.daggerHilt.android
+    implementation deps.daggerHilt.navigation_compose
     kapt deps.daggerHilt.compiler
     kapt deps.daggerHilt.androidx_compiler
-    /** Timber */
-    implementation deps.timber
-    /** Network */
-    implementation deps.retrofit.core
+
     /** Lifecycle */
+    implementation deps.lifecycle.viewmodel
     implementation deps.lifecycle.runtime
-    /** App center*/
-    implementation deps.appCenter.crashes
+    implementation deps.lifecycle.runtime_compose
+    /** Timber */
+    api deps.timber
+    /** App center */
+    api deps.appCenter.analytics
+    api deps.appCenter.crashes
 }
