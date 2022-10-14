@@ -28,6 +28,9 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    configurations {
+        debugImplementation.exclude group: "junit", module: "junit"
+    }
 }
 
 dependencies {
@@ -42,4 +45,5 @@ dependencies {
     /** Mockk */
     api "io.mockk:mockk:1.12.4"
     api "io.mockk:mockk-agent-jvm:1.12.4"
+    api 'com.squareup.leakcanary:leakcanary-android:2.9.1'
 }
