@@ -24,6 +24,10 @@ open class BaseViewModel : ViewModel() {
                 errorMessage = RD.string.unknown_error,
                 displayTryAgainBtn = false
             )
+            ErrorDomain.InternetConnection -> Error(
+                errorMessage = RD.string.internet_error,
+                displayTryAgainBtn = true
+            )
         }
     }
 

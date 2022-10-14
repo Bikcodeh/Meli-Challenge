@@ -11,6 +11,7 @@ import java.net.UnknownHostException
  */
 sealed class Error {
     object Connectivity : Error()
+    object InternetConnection: Error()
     data class Unknown(val message: String) : Error()
     class HttpException(@StringRes val messageResId: Int) : Error()
 }
@@ -20,8 +21,8 @@ sealed class Error {
  * @return Error
  */
 fun Exception.toError(): Error = when (this) {
-    is IOException,
-    is UnknownHostException -> Error.Connectivity
+    is UnknownHostException -> Error.InternetConnection
+    is IOException -> Error.Connectivity
     is HttpException -> HttpErrors.handleError(code())
     else -> Error.Unknown(message ?: "")
 }

@@ -5,9 +5,11 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Search
@@ -19,7 +21,6 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.scale
 import androidx.compose.ui.focus.FocusDirection
 import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.Color
@@ -31,7 +32,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
@@ -41,12 +41,12 @@ import com.airbnb.lottie.compose.rememberLottieComposition
 import com.bikcodeh.melichallenge.R
 import com.bikcodeh.melichallenge.domain.model.Product
 import com.bikcodeh.melichallenge.ui.component.ErrorScreen
+import com.bikcodeh.melichallenge.ui.component.Loading
 import com.bikcodeh.melichallenge.ui.screens.home.HomeDefaults.EMPTY_PRODUCTS_LOTTIE_SIZE
 import com.bikcodeh.melichallenge.ui.screens.home.HomeDefaults.RADIUS_SEARCH
 import com.bikcodeh.melichallenge.ui.screens.home.HomeDefaults.SEARCH_ITEM_IMAGE_SIZE
 import com.bikcodeh.melichallenge.ui.theme.*
 import com.bikcodeh.melichallenge.util.Util
-import com.bikcodeh.mercadolibreapp.ui.component.Loading
 
 @Composable
 fun HomeContent(
@@ -74,15 +74,17 @@ fun HomeContent(
         if (homeUiState.initialState) {
             EmptyInitialState()
         } else {
-            if (homeUiState.products.isNullOrEmpty()) {
-                EmptyProducts()
-            } else {
-                LazyColumn() {
-                    items(homeUiState.products.count()) { index ->
-                        SearchItem(product = homeUiState.products[index], onProductClick)
-                        if (index != homeUiState.products.count() - 1)
-                            Divider(color = Color.LightGray)
+            homeUiState.products?.let { products ->
+                if (products.isNotEmpty()) {
+                    LazyColumn() {
+                        items(homeUiState.products.count()) { index ->
+                            SearchItem(product = homeUiState.products[index], onProductClick)
+                            if (index != homeUiState.products.count() - 1)
+                                Divider(color = Color.LightGray)
+                        }
                     }
+                } else {
+                    EmptyProducts()
                 }
             }
         }
@@ -233,13 +235,19 @@ fun EmptyProducts() {
     val composition by rememberLottieComposition(LottieCompositionSpec.RawRes(R.raw.empty))
     Column(
         modifier = Modifier
+            .verticalScroll(rememberScrollState())
+            .background(MaterialTheme.colorScheme.backgroundColor)
             .fillMaxSize()
             .padding(COMMON_PADDING),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         LottieAnimation(composition, modifier = Modifier.size(EMPTY_PRODUCTS_LOTTIE_SIZE))
-        Text(text = stringResource(id = R.string.empty_products))
+        Text(
+            text = stringResource(id = R.string.empty_products),
+            fontSize = 18.sp,
+            color = MaterialTheme.colorScheme.textColor
+        )
     }
 }
 
@@ -250,15 +258,18 @@ fun EmptyInitialState() {
         modifier = Modifier
             .background(MaterialTheme.colorScheme.backgroundColor)
             .fillMaxSize()
-            .padding(COMMON_PADDING),
+            .padding(COMMON_PADDING)
+            .verticalScroll(rememberScrollState()),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        LottieAnimation(composition, modifier = Modifier.size(EMPTY_PRODUCTS_LOTTIE_SIZE))
-        androidx.compose.material.Text(
+        Text(
             text = stringResource(id = R.string.search_description),
-            color = MaterialTheme.colorScheme.textColor
+            color = MaterialTheme.colorScheme.textColor,
+            fontSize = 18.sp,
+            modifier = Modifier.padding(bottom = COMMON_PADDING)
         )
+        LottieAnimation(composition, modifier = Modifier.size(EMPTY_PRODUCTS_LOTTIE_SIZE))
     }
 }
 
