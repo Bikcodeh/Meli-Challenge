@@ -9,11 +9,11 @@ plugins {
 apply from: "$project.rootDir/jacoco.gradle"
 
 android {
-    compileSdk 33
+    compileSdk build_versions.compile_sdk
 
     defaultConfig {
-        minSdk 26
-        targetSdk 33
+        minSdk build_versions.min_sdk
+        targetSdk build_versions.target_sdk
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -41,17 +41,17 @@ kapt {
 
 dependencies {
     implementation project(':core_test')
-    implementation 'androidx.core:core-ktx:1.7.0'
+    implementation deps.coreKtx
     /** Dagger hilt */
-    implementation "com.google.dagger:hilt-android:$dagger_version"
-    kapt "com.google.dagger:hilt-compiler:$dagger_version"
-    kapt "androidx.hilt:hilt-compiler:$hilt_compiler_version"
+    implementation deps.daggerHilt.android
+    kapt deps.daggerHilt.compiler
+    kapt deps.daggerHilt.androidx_compiler
     /** Timber */
-    implementation "com.jakewharton.timber:timber:5.0.1"
-    /** Retrofit */
-    implementation "com.squareup.retrofit2:retrofit:2.9.0"
+    implementation deps.timber
+    /** Network */
+    implementation deps.retrofit.core
     /** Lifecycle */
-    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.4.1'
+    implementation deps.lifecycle.runtime
     /** App center*/
-    implementation "com.microsoft.appcenter:appcenter-crashes:${appCenter_version}"
+    implementation deps.appCenter.crashes
 }

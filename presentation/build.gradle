@@ -10,11 +10,11 @@ apply from: "$project.rootDir/jacoco.gradle"
 
 android {
     namespace 'com.bikcodeh.melichallenge.presentation'
-    compileSdk 33
+    compileSdk build_versions.compile_sdk
 
     defaultConfig {
-        minSdk 26
-        targetSdk 33
+        minSdk build_versions.min_sdk
+        targetSdk build_versions.target_sdk
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -50,49 +50,34 @@ dependencies {
     implementation project(':data')
     implementation project(':core_test')
 
-    implementation 'androidx.activity:activity-compose:1.3.1'
-    api 'androidx.core:core-ktx:1.7.0'
-    implementation "androidx.compose.ui:ui:$compose_version"
-    api "androidx.compose.material3:material3:1.0.0-beta03"
-    api 'androidx.activity:activity-compose:1.3.1'
-    implementation "androidx.compose.ui:ui-tooling-preview:1.2.1"
-    api 'androidx.compose.material:material:1.2.1'
-    /** Dagger hilt */
-    implementation "com.google.dagger:hilt-android:$dagger_version"
-    implementation "androidx.hilt:hilt-navigation-compose:$hilt_compiler_version"
-    kapt "com.google.dagger:hilt-compiler:$dagger_version"
-    kapt "androidx.hilt:hilt-compiler:$hilt_compiler_version"
-    /** Lifecycle */
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1'
-    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.4.1'
-    implementation "androidx.lifecycle:lifecycle-runtime-compose:2.6.0-alpha02"
-    /** Material icons */
-    implementation "androidx.compose.material:material-icons-extended:1.1.1"
-    /** Navigation */
-    implementation "androidx.navigation:navigation-compose:2.5.0-rc02"
-    /** Coil */
-    implementation "io.coil-kt:coil-compose:2.2.2"
-    /** Lottie compose */
-    implementation "com.airbnb.android:lottie-compose:5.2.0"
-    /** Constraint layout compose */
-    implementation "androidx.constraintlayout:constraintlayout-compose:1.0.1"
-    /** Accompanist */
-    implementation "com.google.accompanist:accompanist-systemuicontroller:0.24.11-rc"
-    /** Timber */
-    implementation "com.jakewharton.timber:timber:5.0.1"
-    /** App center */
-    implementation "com.microsoft.appcenter:appcenter-analytics:${appCenter_version}"
-    implementation "com.microsoft.appcenter:appcenter-crashes:${appCenter_version}"
+    api deps.coreKtx
+    /** Compose */
+    implementation deps.compose.ui
+    api deps.compose.material3
+    api deps.compose.toolin_preview
+    api deps.compose.activity
+    api deps.compose.material
+    implementation deps.compose.material_icons
+    implementation  deps.compose.navigation
+    implementation  deps.compose.coil
+    implementation  deps.compose.lottie
+    implementation  deps.compose.constraint_layout
+    implementation  deps.compose.constraint_layout
+    api  deps.compose.system_ui_controller
 
-    /** Testing */
-    /** Core testing */
-    testImplementation "androidx.arch.core:core-testing:2.1.0"
-    testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
-    androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
-    debugImplementation "androidx.compose.ui:ui-tooling:$compose_version"
-    debugImplementation "androidx.compose.ui:ui-test-manifest:$compose_version"
-    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    /** Dagger hilt */
+    implementation deps.daggerHilt.android
+    implementation deps.daggerHilt.navigation_compose
+    kapt deps.daggerHilt.compiler
+    kapt deps.daggerHilt.androidx_compiler
+
+    /** Lifecycle */
+    implementation deps.lifecycle.viewmodel
+    implementation deps.lifecycle.runtime
+    implementation deps.lifecycle.runtime_compose
+    /** Timber */
+    api deps.timber
+    /** App center */
+    api deps.appCenter.analytics
+    api deps.appCenter.crashes
 }

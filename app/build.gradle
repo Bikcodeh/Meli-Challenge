@@ -9,12 +9,12 @@ plugins {
 apply from: "$project.rootDir/jacoco.gradle"
 
 android {
-    compileSdk 33
+    compileSdk build_versions.compile_sdk
 
     defaultConfig {
         applicationId "com.bikcodeh.melichallenge"
-        minSdk 26
-        targetSdk 33
+        minSdk build_versions.min_sdk
+        targetSdk build_versions.target_sdk
         versionCode 1
         versionName "1.0"
 
@@ -64,16 +64,9 @@ dependencies {
     implementation project(":domain")
     implementation project(":data")
     implementation project(":core_test")
-    /** App center */
-    implementation "com.microsoft.appcenter:appcenter-analytics:${appCenter_version}"
-    implementation "com.microsoft.appcenter:appcenter-crashes:${appCenter_version}"
     /** Dagger hilt */
-    implementation "com.google.dagger:hilt-android:$dagger_version"
-    implementation "androidx.hilt:hilt-navigation-compose:$hilt_compiler_version"
-    kapt "com.google.dagger:hilt-compiler:$dagger_version"
-    kapt "androidx.hilt:hilt-compiler:$hilt_compiler_version"
-    /** Accompanist */
-    implementation "com.google.accompanist:accompanist-systemuicontroller:0.24.11-rc"
-    /** Timber */
-    implementation "com.jakewharton.timber:timber:5.0.1"
+    implementation deps.daggerHilt.android
+    implementation deps.daggerHilt.navigation_compose
+    kapt deps.daggerHilt.compiler
+    kapt deps.daggerHilt.androidx_compiler
 }

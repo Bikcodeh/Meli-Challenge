@@ -9,11 +9,11 @@ plugins {
 apply from: "$project.rootDir/jacoco.gradle"
 
 android {
-    compileSdk 33
+    compileSdk build_versions.compile_sdk
 
     defaultConfig {
-        minSdk 26
-        targetSdk 33
+        minSdk build_versions.min_sdk
+        targetSdk build_versions.target_sdk
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -42,17 +42,17 @@ kapt {
 dependencies {
     implementation project(':domain')
     implementation project(':core_test')
-    implementation 'androidx.core:core-ktx:1.7.0'
+    implementation deps.coreKtx
     /** Dagger hilt */
-    implementation "com.google.dagger:hilt-android:$dagger_version"
-    kapt "com.google.dagger:hilt-compiler:$dagger_version"
-    kapt "androidx.hilt:hilt-compiler:$hilt_compiler_version"
-    /** Retrofit */
-    implementation "com.squareup.retrofit2:retrofit:2.9.0"
-    /** OkHttp */
-    implementation "com.squareup.okhttp3:logging-interceptor:4.9.0"
-    implementation 'com.squareup.okhttp3:okhttp:4.9.3'
+    implementation deps.daggerHilt.android
+    kapt deps.daggerHilt.compiler
+    kapt deps.daggerHilt.androidx_compiler
+    /** Network */
+    implementation deps.retrofit.core
+    implementation deps.okHttp.logginInterceptor
+    implementation deps.okHttp.core
+
     /** Moshi */
-    implementation "com.squareup.moshi:moshi-kotlin:1.9.3"
-    implementation "com.squareup.retrofit2:converter-moshi:2.9.0"
+    implementation deps.moshi.kotlin
+    implementation deps.moshi.converter
 }
