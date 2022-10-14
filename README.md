@@ -1,5 +1,5 @@
 [![kotlin](https://img.shields.io/github/languages/top/bikcodeh/ToDoApp.svg?style=for-the-badge&color=blueviolet)](https://kotlinlang.org/) [![Android API](https://img.shields.io/badge/api-26%2B-brightgreen.svg?style=for-the-badge)](https://android-arsenal.com/api?level=26)
-# Meli Challenge 
+# Meli - Compose 
 #### Main Branch: [![Build status](https://build.appcenter.ms/v0.1/apps/544ffef5-a298-4f4a-8c94-9e41c3f845d0/branches/main/badge)](https://appcenter.ms)
 
 ## :star: Features
@@ -85,21 +85,21 @@
 ## Screenshots Light theme
  | Splash |     Home    |  Loading  |   Products    |  Detail | Detail Description |
  | :----: | :---------: | :-------: | :-----------: | :-----: | :-----: |
- |![Splash](assets/splash.png?raw=true)|![Home](assets/home.png?raw=true)|![Loading](assets/loading.png?raw=true)|![Products](assets/searched.png?raw=true)|![Detail](assets/detail.png?raw=true) |  ![Detail Description ](assets/detail_description.png?raw=true)  |
+ |![Splash](assets/screenshots/splash.png?raw=true)|![Home](assets/screenshots/home.png?raw=true)|![Loading](assets/screenshots/loading.png?raw=true)|![Products](assets/screenshots/searched.png?raw=true)|![Detail](assets/screenshots/detail.png?raw=true) |  ![Detail Description ](assets/screenshots/detail_description.png?raw=true)  |
 
 |   Detail quantity modal  |    Detail quantity textfiel modal | Error  |
-| :----------------------: | :--------------------------------: | :----------------:|:-----------|:------:| 
-| ![Detail quantity modal](assets/modal_quantity.png?raw=true)  |  ![Detail quantity textfiel modal](assets/modal_quantity_textfield.png?raw=true)    | ![Error](assets/error.png?raw=true) |
+| :----------------------: | :--------------------------------: | :----------------:|
+| ![Detail quantity modal](assets/screenshots/modal_quantity.png?raw=true)  |  ![Detail quantity textfiel modal](assets/screenshots/modal_quantity_textfield.png?raw=true)    | ![Error](assets/screenshots/error.png?raw=true) |
 
 ## Screenshots Dark Mode
 
  | Splash |     Home    |  Loading  |   Products    |  Detail | Detail Description |
  | :----: | :---------: | :-------: | :-----------: | :-----: | :-----: |
- |![Splash](assets/splash_dark.png?raw=true)|![Home](assets/home_dark.png?raw=true)|![Loading](assets/loading_dark.png?raw=true)|![Products](assets/searched_dark.png?raw=true)|![Detail](assets/detail_dark.png?raw=true) |![Detail](assets/detail_description_dark.png?raw=true)|
+ |![Splash](assets/screenshots/splash_dark.png?raw=true)|![Home](assets/screenshots/home_dark.png?raw=true)|![Loading](assets/screenshots/loading_dark.png?raw=true)|![Products](assets/screenshots/searched_dark.png?raw=true)|![Detail](assets/screenshots/detail_dark.png?raw=true) |![Detail](assets/screenshots/detail_description_dark.png?raw=true)|
 
 |   Detail quantity modal  |    Detail quantity textfiel modal  | Error  |
-| :----------------------: | :--------------------------------: | :----------------:|:-----------|:------:| 
-| ![Detail quantity modal](assets/modal_quantity_dark.png?raw=true)  |  ![Detail quantity textfiel modal](assets/modal_quantity_textfield_dark.png?raw=true)   | ![Error](assets/error_dark.png?raw=true) |
+| :----------------------: | :--------------------------------: | :----------------: | 
+| ![Detail quantity modal](assets/screenshots/modal_quantity_dark.png?raw=true)  |  ![Detail quantity textfiel modal](assets/screenshots/modal_quantity_textfield_dark.png?raw=true)   | ![Error](assets/screenshots/error_dark.png?raw=true) |
 
 ## :dart: Architecture
 
