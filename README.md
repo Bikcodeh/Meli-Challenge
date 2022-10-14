@@ -93,13 +93,13 @@
 
 ## Screenshots Dark Mode
 
- | Splash |     Home    |  Loading  |   Products    |  Detail | Detail Description |
- | :----: | :---------: | :-------: | :-----------: | :-----: | :-----: |
- |<img src="https://raw.githubusercontent.com/Bikcodeh/Meli-Challenge/main/assets/screenshots/splash_dark.png" align="left" height="300" width="1600">|<img src="https://raw.githubusercontent.com/Bikcodeh/Meli-Challenge/main/assets/screenshots/home_dark.png" align="left" height="300" width="1600">|<img src="https://raw.githubusercontent.com/Bikcodeh/Meli-Challenge/main/assets/screenshots/loading_dark.png" align="left" height="300" width="1600">|<img src="https://raw.githubusercontent.com/Bikcodeh/Meli-Challenge/main/assets/screenshots/searched_dark.png" align="left" height="300" width="1600">|<img src="https://raw.githubusercontent.com/Bikcodeh/Meli-Challenge/main/assets/screenshots/detail_dark.png" align="left" height="300" width="1600"> |<img src="https://raw.githubusercontent.com/Bikcodeh/Meli-Challenge/main/assets/screenshots/detail_description_dark.png" align="left" height="300" width="1600">|
+ | Splash |     Home    |  Loading  |   Products    |  Detail |
+ | :----: | :---------: | :-------: | :-----------: | :-----: |
+ |<img src="https://raw.githubusercontent.com/Bikcodeh/Meli-Challenge/main/assets/screenshots/splash_dark.png" align="left" height="300" width="1600">|<img src="https://raw.githubusercontent.com/Bikcodeh/Meli-Challenge/main/assets/screenshots/home_dark.png" align="left" height="300" width="1600">|<img src="https://raw.githubusercontent.com/Bikcodeh/Meli-Challenge/main/assets/screenshots/loading_dark.png" align="left" height="300" width="1600">|<img src="https://raw.githubusercontent.com/Bikcodeh/Meli-Challenge/main/assets/screenshots/searched_dark.png" align="left" height="300" width="1600">|<img src="https://raw.githubusercontent.com/Bikcodeh/Meli-Challenge/main/assets/screenshots/detail_dark.png" align="left" height="300" width="1600">|
 
-|   Detail quantity modal  |    Detail quantity textfiel modal  | Error  |
-| :----------------------: | :--------------------------------: | :----------------: | 
-| <img src="https://raw.githubusercontent.com/Bikcodeh/Meli-Challenge/main/assets/screenshots/modal_quantity_dark.png" align="left" height="300" width="170"> |  <img src="https://raw.githubusercontent.com/Bikcodeh/Meli-Challenge/main/assets/screenshots/modal_quantity_textfield_dark.png" align="left" height="300" width="170"> | <img src="https://raw.githubusercontent.com/Bikcodeh/Meli-Challenge/main/assets/screenshots/error_dark.png" align="left" height="300" width="170"> |
+| Detail Description | Detail quantity modal  |    Detail quantity textfiel modal  | Error  |
+| :----------------: |:----------------: |:--------------------------------: | :----------------: | 
+|<img src="https://raw.githubusercontent.com/Bikcodeh/Meli-Challenge/main/assets/screenshots/detail_description_dark.png" align="left" height="300" width="170">| <img src="https://raw.githubusercontent.com/Bikcodeh/Meli-Challenge/main/assets/screenshots/modal_quantity_dark.png" align="left" height="300" width="170"> |  <img src="https://raw.githubusercontent.com/Bikcodeh/Meli-Challenge/main/assets/screenshots/modal_quantity_textfield_dark.png" align="left" height="300" width="170"> | <img src="https://raw.githubusercontent.com/Bikcodeh/Meli-Challenge/main/assets/screenshots/error_dark.png" align="left" height="300" width="170"> |
 
 ## :dart: Architecture
 
