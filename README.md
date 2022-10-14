@@ -1,5 +1,5 @@
 [![kotlin](https://img.shields.io/github/languages/top/bikcodeh/ToDoApp.svg?style=for-the-badge&color=blueviolet)](https://kotlinlang.org/) [![Android API](https://img.shields.io/badge/api-26%2B-brightgreen.svg?style=for-the-badge)](https://android-arsenal.com/api?level=26)
-# Meli - Compose 
+# Meli - Challenge 
 #### Main Branch: [![Build status](https://build.appcenter.ms/v0.1/apps/544ffef5-a298-4f4a-8c94-9e41c3f845d0/branches/main/badge)](https://appcenter.ms)
 
 ## :star: Features
