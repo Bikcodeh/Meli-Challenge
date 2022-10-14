@@ -4,11 +4,12 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.material.ExperimentalMaterialApi
+import androidx.compose.material3.MaterialTheme
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
-import com.bikcodeh.melichallenge.ui.navigation.MeliNavigation
-import com.bikcodeh.melichallenge.ui.theme.MeliChallengeTheme
-import com.bikcodeh.melichallenge.ui.theme.statusBarColor
+import com.bikcodeh.melichallenge.presentation.ui.navigation.MeliNavigation
+import com.bikcodeh.melichallenge.presentation.ui.theme.MeliChallengeTheme
+import com.bikcodeh.melichallenge.presentation.ui.theme.statusBarColor
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -25,7 +26,7 @@ class MainActivity : ComponentActivity() {
             val systemUiController = rememberSystemUiController()
             MeliChallengeTheme {
                 systemUiController.setStatusBarColor(
-                    color = androidx.compose.material3.MaterialTheme.colorScheme.statusBarColor
+                    color = MaterialTheme.colorScheme.statusBarColor
                 )
                 MeliNavigation(navController = navController)
             }
