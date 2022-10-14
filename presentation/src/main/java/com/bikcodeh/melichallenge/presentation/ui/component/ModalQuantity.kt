@@ -65,6 +65,7 @@ fun ModalQuantityListSelector(
             if (quantity > DEFAULT_TOTAL_ITEMS) {
                 run loop@{
                     repeat(DEFAULT_TOTAL_ITEMS) {
+                        val index = it
                         val currentQuantity = it + 1
                         val color = if (currentQuantity == quantitySelected) {
                             MaterialTheme.colorScheme.itemListSelected
@@ -86,7 +87,7 @@ fun ModalQuantityListSelector(
                             color = MaterialTheme.colorScheme.textColor,
                         )
                         Divider()
-                        if (currentQuantity == MORE_THAN_3_ITEMS) {
+                        if (index == MORE_THAN_3_ITEMS) {
                             val colorMoreThan = if (quantitySelected >= MORE_THAN_3_ITEMS) {
                                 MaterialTheme.colorScheme.itemListSelected
                             } else {

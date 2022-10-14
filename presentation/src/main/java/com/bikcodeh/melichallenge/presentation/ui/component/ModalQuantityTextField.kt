@@ -129,30 +129,27 @@ fun ModalQuantityTextField(
                             .padding(horizontal = COMMON_MINIMUM_PADDING)
                     )
                 }
-                Button(
-                    enabled = enabledButton,
-                    onClick = {
-                        updateQuantity(quantityTextField.toInt())
-                        quantityTextField = ""
-                        onCloseModal()
-                        keyboardController?.hide()
-                    },
-                    colors = ButtonDefaults.buttonColors(
-                        backgroundColor = CelticBlue,
-                        contentColor = Color.White
-                    ),
+                ActionButton(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(
                             start = COMMON_MINIMUM_PADDING,
                             end = COMMON_MINIMUM_PADDING,
                             bottom = COMMON_PADDING
-                        )
-                ) {
-                    Text(
-                        text = stringResource(id = R.string.add_quantity)
-                    )
-                }
+                        ),
+                    buttonColors = ButtonDefaults.buttonColors(
+                        backgroundColor = CelticBlue,
+                        contentColor = Color.White
+                    ),
+                    textButton = R.string.add_quantity,
+                    onClick = {
+                        updateQuantity(quantityTextField.toInt())
+                        quantityTextField = ""
+                        onCloseModal()
+                        keyboardController?.hide()
+                    },
+                    isEnabled = enabledButton
+                )
             }
         }
     ) {}

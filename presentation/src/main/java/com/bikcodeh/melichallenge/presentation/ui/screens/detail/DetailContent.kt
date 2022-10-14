@@ -1,5 +1,6 @@
 package com.bikcodeh.melichallenge.presentation.ui.screens.detail
 
+import android.annotation.SuppressLint
 import android.content.res.Configuration.UI_MODE_NIGHT_NO
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -27,6 +28,7 @@ import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.bikcodeh.melichallenge.presentation.R
 import com.bikcodeh.melichallenge.domain.model.Product
+import com.bikcodeh.melichallenge.presentation.ui.component.ActionButton
 import com.bikcodeh.melichallenge.presentation.ui.theme.*
 import com.bikcodeh.melichallenge.presentation.ui.component.ModalQuantityListSelector
 import com.bikcodeh.melichallenge.presentation.ui.component.ModalQuantityTextField
@@ -34,6 +36,7 @@ import com.bikcodeh.melichallenge.presentation.util.Util
 import kotlinx.coroutines.launch
 import androidx.compose.material3.MaterialTheme as MaterialTheme3
 
+@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @ExperimentalMaterialApi
 @Composable
 fun DetailContent(
@@ -112,30 +115,28 @@ fun DetailContent(
                 quantitySelected = quantitySelected
             )
 
-            Button(
-                onClick = {},
+            ActionButton(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(top = COMMON_PADDING),
-                colors = ButtonDefaults.buttonColors(
-                    backgroundColor = CelticBlue,
-                    contentColor = Color.White
-                )
-            ) {
-                Text(text = stringResource(id = R.string.buy_now))
-            }
-            Button(
-                onClick = {},
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(bottom = COMMON_PADDING),
-                colors = ButtonDefaults.buttonColors(
+                    .padding(top = COMMON_PADDING) ,
+                buttonColors = ButtonDefaults.buttonColors(
                     backgroundColor = AzureishWhite,
                     contentColor = CelticBlue
-                )
-            ) {
-                Text(text = stringResource(id = R.string.add_to_cart))
-            }
+                ),
+                textButton = R.string.add_to_cart,
+                onClick = {}
+            )
+            ActionButton(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(bottom = COMMON_PADDING) ,
+                buttonColors = ButtonDefaults.buttonColors(
+                    backgroundColor = CelticBlue,
+                    contentColor = Color.White
+                ),
+                textButton = R.string.buy_now,
+                onClick = {}
+            )
             SnackbarHost(
                 hostState = snackbarHostState
             )
