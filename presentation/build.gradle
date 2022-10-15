@@ -90,6 +90,12 @@ dependencies {
     androidTestImplementation deps.test.mock_web_server
     androidTestImplementation deps.test.androidx_junit
     androidTestImplementation deps.test.compose_ui_junit
+    androidTestImplementation deps.test.compose_ui_junit
+    androidTestImplementation deps.retrofit.core
+    androidTestImplementation deps.okHttp.logginInterceptor
+    androidTestImplementation deps.okHttp.core
+    androidTestImplementation deps.moshi.kotlin
+    androidTestImplementation deps.moshi.converter
     androidTestImplementation deps.test.espresso
     debugImplementation deps.test.compose_ui_tooling
     debugImplementation deps.test.compose_ui_test_manifest

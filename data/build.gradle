@@ -20,8 +20,12 @@ android {
     }
 
     buildTypes {
+        debug {
+            buildConfigField "String", "APP_CENTER_KEY", '"' + getProps("APP_CENTER_KEY") + '"'
+        }
         release {
             minifyEnabled false
+            buildConfigField "String", "APP_CENTER_KEY", '"' + getProps("APP_CENTER_KEY") + '"'
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
