@@ -80,4 +80,13 @@ dependencies {
     /** App center */
     api deps.appCenter.analytics
     api deps.appCenter.crashes
+
+    /** Test */
+    androidTestImplementation deps.test.hilt_android
+    kaptAndroidTest deps.test.hilt_compiler
+    androidTestImplementation deps.test.mock_web_server
+    androidTestImplementation deps.test.androidx_junit
+    androidTestImplementation deps.test.compose_ui_junit
+    debugImplementation deps.test.compose_ui_tooling
+    debugImplementation deps.test.compose_ui_test_manifest
 }
