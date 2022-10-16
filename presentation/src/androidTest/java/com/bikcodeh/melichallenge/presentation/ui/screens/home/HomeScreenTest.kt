@@ -21,7 +21,7 @@ import com.bikcodeh.melichallenge.presentation.ui.screens.detail.DetailTestTags
 import com.bikcodeh.melichallenge.presentation.ui.screens.home.HomeTestTags.CONTAINER_PRODUCTS
 import com.bikcodeh.melichallenge.presentation.ui.screens.home.HomeTestTags.ITEM_CONTAINER
 import com.bikcodeh.melichallenge.presentation.ui.screens.home.HomeTestTags.MESSAGE_GENERIC_SCREEN
-import com.bikcodeh.melichallenge.presentation.ui.screens.splash.SPLASH_CONTAINER
+import com.bikcodeh.melichallenge.presentation.ui.screens.splash.SplashTestTags.SPLASH_CONTAINER
 import com.bikcodeh.melichallenge.presentation.util.waitUntilDoesNotExist
 import com.bikcodeh.melichallenge.presentation.util.waitUntilExists
 import dagger.hilt.android.testing.HiltAndroidRule
@@ -52,12 +52,6 @@ class HomeScreenTest : BaseUITest(dispatcher = searchDispatcher) {
     fun setUp() {
         hiltTestRule.inject()
         setView()
-    }
-
-    @After
-    fun tear_down() {
-        setView()
-        typeRequest = TypeRequest.Idle
     }
 
     private fun setView() {

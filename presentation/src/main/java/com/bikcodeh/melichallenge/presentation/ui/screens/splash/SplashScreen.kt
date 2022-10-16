@@ -14,11 +14,16 @@ import androidx.compose.ui.platform.testTag
 import com.airbnb.lottie.compose.LottieAnimation
 import com.airbnb.lottie.compose.LottieCompositionSpec
 import com.airbnb.lottie.compose.rememberLottieComposition
+import com.bikcodeh.melichallenge.presentation.R
+import com.bikcodeh.melichallenge.presentation.ui.screens.splash.SplashTestTags.SPLASH_CONTAINER
+import com.bikcodeh.melichallenge.presentation.ui.screens.splash.SplashTestTags.SPLASH_LOTTIE
 import com.bikcodeh.melichallenge.presentation.ui.theme.backgroundColor
 import kotlinx.coroutines.delay
-import com.bikcodeh.melichallenge.presentation.R
 
-const val SPLASH_CONTAINER = "SplashContainer"
+object SplashTestTags {
+    const val SPLASH_CONTAINER = "SplashContainer"
+    const val SPLASH_LOTTIE = "SplashLottie"
+}
 
 @Composable
 fun SplashScreen(navigateToHome: () -> Unit) {
@@ -34,7 +39,8 @@ fun SplashScreen(navigateToHome: () -> Unit) {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         LottieAnimation(
-            composition
+            composition,
+            modifier = Modifier.testTag(SPLASH_LOTTIE)
         )
 
         LaunchedEffect(key1 = true) {
