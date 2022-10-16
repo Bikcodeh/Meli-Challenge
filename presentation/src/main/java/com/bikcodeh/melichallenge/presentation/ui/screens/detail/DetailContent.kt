@@ -27,12 +27,12 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
-import com.bikcodeh.melichallenge.presentation.R
 import com.bikcodeh.melichallenge.domain.model.Product
+import com.bikcodeh.melichallenge.presentation.R
 import com.bikcodeh.melichallenge.presentation.ui.component.ActionButton
-import com.bikcodeh.melichallenge.presentation.ui.theme.*
 import com.bikcodeh.melichallenge.presentation.ui.component.ModalQuantityListSelector
 import com.bikcodeh.melichallenge.presentation.ui.component.ModalQuantityTextField
+import com.bikcodeh.melichallenge.presentation.ui.theme.*
 import com.bikcodeh.melichallenge.presentation.util.Util
 import kotlinx.coroutines.launch
 import androidx.compose.material3.MaterialTheme as MaterialTheme3
@@ -71,11 +71,13 @@ fun DetailContent(
                     text = "${product.condition.capitalize(Locale.current)} | ${product.soldQuantity} sold",
                     fontStyle = MaterialTheme.typography.body1.fontStyle,
                     fontSize = FONT_SMALL,
-                    color = Color.Gray
+                    color = Color.Gray,
+                    modifier = Modifier.testTag(DetailTestTags.CONDITION)
                 )
             }
             Text(
                 text = product.title, modifier = Modifier
+                    .testTag(DetailTestTags.TITLE)
                     .fillMaxWidth()
                     .padding(vertical = COMMON_MINIMUM_PADDING),
                 color = MaterialTheme3.colorScheme.textColor
@@ -119,8 +121,9 @@ fun DetailContent(
 
             ActionButton(
                 modifier = Modifier
+                    .testTag(DetailTestTags.BUTTON_ADD_TO_CART)
                     .fillMaxWidth()
-                    .padding(top = COMMON_PADDING) ,
+                    .padding(top = COMMON_PADDING),
                 buttonColors = ButtonDefaults.buttonColors(
                     backgroundColor = AzureishWhite,
                     contentColor = CelticBlue
@@ -130,8 +133,9 @@ fun DetailContent(
             )
             ActionButton(
                 modifier = Modifier
+                    .testTag(DetailTestTags.BUTTON_BUY_NOW)
                     .fillMaxWidth()
-                    .padding(bottom = COMMON_PADDING) ,
+                    .padding(bottom = COMMON_PADDING),
                 buttonColors = ButtonDefaults.buttonColors(
                     backgroundColor = CelticBlue,
                     contentColor = Color.White
@@ -156,7 +160,9 @@ fun DetailContent(
             Text(
                 text = messageDescription,
                 color = MaterialTheme3.colorScheme.textColor,
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier
+                    .testTag(DetailTestTags.DESCRIPTION)
+                    .fillMaxWidth()
             )
         }
         ModalQuantityListSelector(
