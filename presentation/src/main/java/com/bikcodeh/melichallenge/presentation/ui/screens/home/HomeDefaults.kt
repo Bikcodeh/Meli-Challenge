@@ -13,4 +13,6 @@ object HomeTestTags {
     const val INITIAL_SCREEN = "InitialScreen"
     const val EMPTY_SCREEN = "EmptyScreen"
     const val MESSAGE_GENERIC_SCREEN = "MessageGenericScreen"
+    const val ITEM_CONTAINER = "ItemContainer"
+    const val ITEM_NAME = "ItemName"
 }

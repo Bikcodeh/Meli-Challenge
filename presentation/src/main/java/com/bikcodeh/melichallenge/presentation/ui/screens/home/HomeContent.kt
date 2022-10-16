@@ -37,6 +37,8 @@ import com.bikcodeh.melichallenge.presentation.R
 import com.bikcodeh.melichallenge.presentation.ui.component.*
 import com.bikcodeh.melichallenge.presentation.ui.screens.home.HomeDefaults.RADIUS_SEARCH
 import com.bikcodeh.melichallenge.presentation.ui.screens.home.HomeDefaults.SEARCH_ITEM_IMAGE_SIZE
+import com.bikcodeh.melichallenge.presentation.ui.screens.home.HomeTestTags.ITEM_CONTAINER
+import com.bikcodeh.melichallenge.presentation.ui.screens.home.HomeTestTags.ITEM_NAME
 import com.bikcodeh.melichallenge.presentation.ui.theme.*
 import com.bikcodeh.melichallenge.presentation.util.Util
 
@@ -105,6 +107,7 @@ fun HomeContent(
 fun SearchItem(product: Product, onProductClick: (product: Product) -> Unit) {
     Row(
         modifier = Modifier
+            .testTag(ITEM_CONTAINER)
             .background(MaterialTheme.colorScheme.backgroundColor)
             .clickable {
                 onProductClick(product)
@@ -137,7 +140,8 @@ fun SearchItem(product: Product, onProductClick: (product: Product) -> Unit) {
             Text(
                 text = product.title, maxLines = 2, overflow = TextOverflow.Ellipsis,
                 fontSize = MaterialTheme.typography.bodyMedium.fontSize,
-                color = MaterialTheme.colorScheme.textColor
+                color = MaterialTheme.colorScheme.textColor,
+                modifier = Modifier.testTag(ITEM_NAME)
             )
             Text(
                 text = "$${Util.currencyFormatter(product.price.toInt())}",
