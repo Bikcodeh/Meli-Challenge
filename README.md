@@ -120,6 +120,11 @@
  | Currency Util  |   String extension  |
  | :------------: | :-----------------: | 
  | <img src="https://raw.githubusercontent.com/Bikcodeh/Meli-Challenge/main/assets/coverage/util_currencyformatter.png" align="left" height="300" width="500"> |  <img src="https://raw.githubusercontent.com/Bikcodeh/Meli-Challenge/main/assets/coverage/extension_string_encode_decode.png" align="left" height="300" width="500"> |
+ 
+ ## :white_check_mark: UI Testing Report
+ | Splash - Home - Detail  | 
+ | :------------: |
+ | <img src="https://raw.githubusercontent.com/Bikcodeh/Meli-Challenge/main/assets/coverage/ui_testing_report.png" align="left" height="300" width="500"> |
 
 ## :dart: Architecture
 
