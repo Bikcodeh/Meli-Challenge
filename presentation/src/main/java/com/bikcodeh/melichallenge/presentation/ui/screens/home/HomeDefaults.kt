@@ -7,3 +7,12 @@ object HomeDefaults {
     val RADIUS_SEARCH = 46.dp
     val EMPTY_PRODUCTS_LOTTIE_SIZE = 200.dp
 }
+
+object HomeTestTags {
+    const val CONTAINER_PRODUCTS = "LazyColumProducts"
+    const val INITIAL_SCREEN = "InitialScreen"
+    const val EMPTY_SCREEN = "EmptyScreen"
+    const val MESSAGE_GENERIC_SCREEN = "MessageGenericScreen"
+    const val ITEM_CONTAINER = "ItemContainer"
+    const val ITEM_NAME = "ItemName"
+}

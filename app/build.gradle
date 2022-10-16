@@ -17,22 +17,6 @@ android {
         targetSdk build_versions.target_sdk
         versionCode 1
         versionName "1.0"
-
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        vectorDrawables {
-            useSupportLibrary true
-        }
-    }
-
-    buildTypes {
-        debug {
-            buildConfigField "String", "APP_CENTER_KEY", '"' + getProps("APP_CENTER_KEY") + '"'
-        }
-        release {
-            minifyEnabled false
-            buildConfigField "String", "APP_CENTER_KEY", '"' + getProps("APP_CENTER_KEY") + '"'
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_11
@@ -61,7 +45,6 @@ kapt {
 
 dependencies {
     implementation project(":presentation")
-    implementation project(":domain")
     implementation project(":data")
     /** Dagger hilt */
     implementation deps.daggerHilt.android

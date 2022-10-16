@@ -13,6 +13,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -29,12 +30,17 @@ import com.bikcodeh.melichallenge.presentation.ui.theme.textColor
 import com.bikcodeh.melichallenge.presentation.ui.util.BaseViewModel
 import com.bikcodeh.melichallenge.domain.R as RD
 
+const val ERROR_CONTAINER = "ErrorContainer"
+const val ERROR_MESSAGE = "ErrorMessage"
+const val ERROR_BUTTON = "ErrorButton"
+
 @Composable
 fun ErrorScreen(error: BaseViewModel.Error, onRefresh: () -> Unit) {
     val composition by rememberLottieComposition(LottieCompositionSpec.RawRes(R.raw.error))
 
     ConstraintLayout(
         modifier = Modifier
+            .testTag(ERROR_CONTAINER)
             .background(MaterialTheme.colorScheme.backgroundColor)
             .fillMaxSize()
             .padding(COMMON_PADDING)
@@ -53,6 +59,7 @@ fun ErrorScreen(error: BaseViewModel.Error, onRefresh: () -> Unit) {
             text = stringResource(id = error.errorMessage ?: RD.string.unknown_error),
             textAlign = TextAlign.Center,
             modifier = Modifier
+                .testTag(ERROR_MESSAGE)
                 .fillMaxWidth()
                 .padding(horizontal = COMMON_PADDING)
                 .constrainAs(message) {
@@ -63,6 +70,7 @@ fun ErrorScreen(error: BaseViewModel.Error, onRefresh: () -> Unit) {
         )
 
         OutlinedButton(onClick = onRefresh, modifier = Modifier
+            .testTag(ERROR_BUTTON)
             .fillMaxWidth()
             .constrainAs(button) {
                 bottom.linkTo(parent.bottom, margin = COMMON_PADDING)

@@ -15,19 +15,22 @@ android {
         minSdk build_versions.min_sdk
         targetSdk build_versions.target_sdk
 
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
     }
 
     buildTypes {
+        debug {
+            buildConfigField "String", "APP_CENTER_KEY", '"' + getProps("APP_CENTER_KEY") + '"'
+        }
         release {
             minifyEnabled false
+            buildConfigField "String", "APP_CENTER_KEY", '"' + getProps("APP_CENTER_KEY") + '"'
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
     }
     kotlinOptions {
         jvmTarget = '1.8'
