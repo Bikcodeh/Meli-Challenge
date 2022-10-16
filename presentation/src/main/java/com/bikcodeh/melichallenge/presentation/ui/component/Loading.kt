@@ -10,6 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
 import com.airbnb.lottie.compose.LottieAnimation
 import com.airbnb.lottie.compose.LottieCompositionSpec
@@ -17,11 +18,14 @@ import com.airbnb.lottie.compose.rememberLottieComposition
 import com.bikcodeh.melichallenge.presentation.R
 import com.bikcodeh.melichallenge.presentation.ui.theme.COMMON_PADDING
 
+const val LOADING_CONTAINER = "LoadingContainer"
+
 @Composable
 fun Loading() {
     val composition by rememberLottieComposition(LottieCompositionSpec.RawRes(R.raw.searching))
     Column(
         modifier = Modifier
+            .testTag(LOADING_CONTAINER)
             .background(MaterialTheme.colorScheme.background)
             .fillMaxSize()
             .padding(COMMON_PADDING),

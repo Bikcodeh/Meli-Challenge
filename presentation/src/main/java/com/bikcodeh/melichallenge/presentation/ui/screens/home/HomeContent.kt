@@ -24,6 +24,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalFocusManager
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
@@ -33,11 +34,11 @@ import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.bikcodeh.melichallenge.domain.model.Product
 import com.bikcodeh.melichallenge.presentation.R
-import com.bikcodeh.melichallenge.presentation.ui.component.ErrorScreen
-import com.bikcodeh.melichallenge.presentation.ui.component.GenericMessageScreen
-import com.bikcodeh.melichallenge.presentation.ui.component.Loading
+import com.bikcodeh.melichallenge.presentation.ui.component.*
 import com.bikcodeh.melichallenge.presentation.ui.screens.home.HomeDefaults.RADIUS_SEARCH
 import com.bikcodeh.melichallenge.presentation.ui.screens.home.HomeDefaults.SEARCH_ITEM_IMAGE_SIZE
+import com.bikcodeh.melichallenge.presentation.ui.screens.home.HomeTestTags.ITEM_CONTAINER
+import com.bikcodeh.melichallenge.presentation.ui.screens.home.HomeTestTags.ITEM_NAME
 import com.bikcodeh.melichallenge.presentation.ui.theme.*
 import com.bikcodeh.melichallenge.presentation.util.Util
 
@@ -54,6 +55,10 @@ fun HomeContent(
 ) {
     Column(modifier = Modifier.fillMaxSize()) {
         Search(
+            modifier = Modifier
+                .testTag(SearchTestTags.CONTAINER)
+                .fillMaxWidth()
+                .background(MaterialTheme.colorScheme.statusBarColor),
             text = text,
             onTextChange = onTextChange,
             onClearSearch = onClearSearch,
@@ -66,13 +71,15 @@ fun HomeContent(
 
         if (homeUiState.initialState) {
             GenericMessageScreen(
+                modifier = Modifier.testTag(HomeTestTags.INITIAL_SCREEN),
+                textModifier = Modifier.testTag(HomeTestTags.MESSAGE_GENERIC_SCREEN),
                 lottieId = R.raw.search,
                 messageId = R.string.search_description
             )
         } else {
             homeUiState.products?.let { products ->
                 if (products.isNotEmpty()) {
-                    LazyColumn() {
+                    LazyColumn(modifier = Modifier.testTag(HomeTestTags.CONTAINER_PRODUCTS)) {
                         items(homeUiState.products.count()) { index ->
                             SearchItem(product = homeUiState.products[index], onProductClick)
                             if (index != homeUiState.products.count() - 1)
@@ -81,6 +88,8 @@ fun HomeContent(
                     }
                 } else {
                     GenericMessageScreen(
+                        modifier = Modifier.testTag(HomeTestTags.EMPTY_SCREEN),
+                        textModifier = Modifier.testTag(HomeTestTags.MESSAGE_GENERIC_SCREEN),
                         lottieId = R.raw.empty,
                         messageId = R.string.empty_products
                     )
@@ -94,99 +103,11 @@ fun HomeContent(
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun Search(
-    text: String,
-    onTextChange: (String) -> Unit,
-    onClearSearch: (String) -> Unit,
-    onCloseSearch: () -> Unit,
-    onSearch: (String) -> Unit
-) {
-    val focus = LocalFocusManager.current
-    var focusActive by rememberSaveable() { mutableStateOf(false) }
-
-    Box(
-        modifier = Modifier
-            .fillMaxWidth()
-            .background(MaterialTheme.colorScheme.statusBarColor)
-    ) {
-        OutlinedTextField(
-            value = text,
-            onValueChange = onTextChange,
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(COMMON_PADDING)
-                .onFocusChanged { focusState ->
-                    focusActive = focusState.hasFocus
-                },
-            maxLines = 1,
-            leadingIcon = {
-                Icon(
-                    Icons.Default.Search,
-                    contentDescription = stringResource(id = R.string.search)
-                )
-            },
-            trailingIcon = {
-
-                if (text.isNotEmpty() || focusActive) {
-                    IconButton(onClick = {
-                        if (text.isNotEmpty() && !focusActive) {
-                            onClearSearch(text)
-                            focus.moveFocus(FocusDirection.Right)
-                        } else {
-                            onClearSearch(text)
-                        }
-
-                        if (text.isEmpty()) {
-                            focus.clearFocus()
-                            onCloseSearch()
-                        }
-                    }) {
-                        Icon(
-                            Icons.Default.Close,
-                            contentDescription = stringResource(id = R.string.clear_search_description)
-                        )
-                    }
-                }
-            },
-            shape = RoundedCornerShape(RADIUS_SEARCH),
-            placeholder = {
-                Text(
-                    text = stringResource(id = R.string.search_in_meli),
-                    color = MaterialTheme.colorScheme.textColor
-                )
-            },
-            keyboardOptions = KeyboardOptions(
-                imeAction = ImeAction.Search,
-            ),
-            keyboardActions = KeyboardActions(
-                onSearch = {
-                    if (text.isNotEmpty()) {
-                        onSearch(text)
-                        focus.clearFocus()
-                    }
-                }
-            ),
-            colors = TextFieldDefaults.outlinedTextFieldColors(
-                containerColor = MaterialTheme.colorScheme.backgroundColorTextField,
-                textColor = MaterialTheme.colorScheme.textColor,
-                focusedTrailingIconColor = MaterialTheme.colorScheme.iconColor,
-                unfocusedTrailingIconColor = MaterialTheme.colorScheme.iconColor,
-                focusedLeadingIconColor = MaterialTheme.colorScheme.iconColor,
-                unfocusedLeadingIconColor = MaterialTheme.colorScheme.iconColor,
-                focusedBorderColor = Color.Transparent,
-                unfocusedBorderColor = Color.Transparent
-            ),
-            singleLine = true
-        )
-    }
-}
-
 @Composable
 fun SearchItem(product: Product, onProductClick: (product: Product) -> Unit) {
     Row(
         modifier = Modifier
+            .testTag(ITEM_CONTAINER)
             .background(MaterialTheme.colorScheme.backgroundColor)
             .clickable {
                 onProductClick(product)
@@ -219,7 +140,8 @@ fun SearchItem(product: Product, onProductClick: (product: Product) -> Unit) {
             Text(
                 text = product.title, maxLines = 2, overflow = TextOverflow.Ellipsis,
                 fontSize = MaterialTheme.typography.bodyMedium.fontSize,
-                color = MaterialTheme.colorScheme.textColor
+                color = MaterialTheme.colorScheme.textColor,
+                modifier = Modifier.testTag(ITEM_NAME)
             )
             Text(
                 text = "$${Util.currencyFormatter(product.price.toInt())}",
@@ -227,12 +149,6 @@ fun SearchItem(product: Product, onProductClick: (product: Product) -> Unit) {
             )
         }
     }
-}
-
-@Composable
-@Preview
-fun SearchContentPreview() {
-    Search(text = "", onTextChange = {}, onClearSearch = {}, onSearch = {}, onCloseSearch = {})
 }
 
 @Composable

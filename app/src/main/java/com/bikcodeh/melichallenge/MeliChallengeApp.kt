@@ -1,6 +1,7 @@
 package com.bikcodeh.melichallenge
 
 import android.app.Application
+import com.bikcodeh.melichallenge.data.BuildConfig as BuildConfigData
 import com.bikcodeh.melichallenge.presentation.util.ReleaseTree
 import com.microsoft.appcenter.AppCenter
 import com.microsoft.appcenter.analytics.Analytics
@@ -17,7 +18,7 @@ class MeliChallengeApp: Application() {
     }
 
     private fun setUpTimber() {
-        if (BuildConfig.DEBUG) {
+        if (BuildConfigData.DEBUG) {
             Timber.plant(Timber.DebugTree())
         } else {
             Timber.plant(ReleaseTree())
@@ -27,7 +28,7 @@ class MeliChallengeApp: Application() {
     private fun setUpAppCenter() {
         AppCenter.start(
             this,
-            BuildConfig.APP_CENTER_KEY,
+            BuildConfigData.APP_CENTER_KEY,
             Analytics::class.java,
             Crashes::class.java
         )

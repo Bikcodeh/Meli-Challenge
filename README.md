@@ -40,17 +40,23 @@
 - [**com**](com)
     - [**bikcodeh**](com/bikcodeh)
         - [**melichallenge**](com/bikcodeh/melichallenge)
-            - [**ui**](com/bikcodeh/melichallenge/ui)
-                - [**component**](com/bikcodeh/melichallenge/ui/component)
-                - [**navigation**](com/bikcodeh/melichallenge/ui/navigation)
-                - [**screens**](com/bikcodeh/melichallenge/ui/screens)
-                    - [**detail**](com/bikcodeh/melichallenge/ui/screens/detail)
-                    - [**home**](com/bikcodeh/melichallenge/ui/screens/home)
-                    - [**splash**](com/bikcodeh/melichallenge/ui/screens/splash)
-                - [**theme**](com/bikcodeh/melichallenge/ui/theme)
-                - [**util**](com/bikcodeh/melichallenge/ui/util)
-            - [**util**](com/bikcodeh/melichallenge/util)
-                - [**extension**](com/bikcodeh/melichallenge/util/extension)
+                
+### Presentation
+- [**com**](com)
+    - [**bikcodeh**](com/bikcodeh)
+        - [**melichallenge**](com/bikcodeh/melichallenge)
+            - [**presentation**](com/bikcodeh/melichallenge/presentation)
+                - [**ui**](com/bikcodeh/melichallenge/presentation/ui)
+                    - [**component**](com/bikcodeh/melichallenge/presentation/ui/component)
+                    - [**navigation**](com/bikcodeh/melichallenge/presentation/ui/navigation)
+                    - [**screens**](com/bikcodeh/melichallenge/presentation/ui/screens)
+                        - [**detail**](com/bikcodeh/melichallenge/presentation/ui/screens/detail)
+                        - [**home**](com/bikcodeh/melichallenge/presentation/ui/screens/home)
+                        - [**splash**](com/bikcodeh/melichallenge/presentation/ui/screens/splash)
+                    - [**theme**](com/bikcodeh/melichallenge/presentation/ui/theme)
+                    - [**util**](com/bikcodeh/melichallenge/presentation/ui/util)
+                - [**util**](com/bikcodeh/melichallenge/presentation/util)
+                    - [**extension**](com/bikcodeh/melichallenge/presentation/util/extension)
 
 #### Data
 - [**com**](com)
@@ -102,7 +108,7 @@
 |<img src="https://raw.githubusercontent.com/Bikcodeh/Meli-Challenge/main/assets/screenshots/detail_description_dark.png" align="left" height="300" width="170">| <img src="https://raw.githubusercontent.com/Bikcodeh/Meli-Challenge/main/assets/screenshots/modal_quantity_dark.png" align="left" height="300" width="170"> |  <img src="https://raw.githubusercontent.com/Bikcodeh/Meli-Challenge/main/assets/screenshots/modal_quantity_textfield_dark.png" align="left" height="300" width="170"> | <img src="https://raw.githubusercontent.com/Bikcodeh/Meli-Challenge/main/assets/screenshots/error_dark.png" align="left" height="300" width="170"> |
 
 ## :white_check_mark: Code coverage
-### Unit testing for layers Domain, data and app (Viewmodels and Util class) with 100% coverage.
+### Unit testing for layers Domain, data and presentation (Viewmodels and Util class) with 100% coverage.
 | BaseViewModel |     DetailViewModel    |  HomeViewModel  |   MeliRepository  |
 | :-----------: | :--------------------: | :-------------: | :---------------: | 
 |    <img src="https://raw.githubusercontent.com/Bikcodeh/Meli-Challenge/main/assets/coverage/baseviewmodel.png" align="left" height="300" width="170">           | <img src="https://raw.githubusercontent.com/Bikcodeh/Meli-Challenge/main/assets/coverage/detailviewmodel.png" align="left" height="300" width="170"> | <img src="https://raw.githubusercontent.com/Bikcodeh/Meli-Challenge/main/assets/coverage/homeviewmodel.png" align="left" height="300" width="170"> | <img src="https://raw.githubusercontent.com/Bikcodeh/Meli-Challenge/main/assets/coverage/meliRepository.png" align="left" height="300" width="170"> |

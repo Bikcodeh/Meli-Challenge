@@ -8,7 +8,6 @@ import com.bikcodeh.melichallenge.domain.common.toError
 import com.bikcodeh.melichallenge.domain.common.validateHttpErrorCode
 import com.bikcodeh.melichallenge.domain.di.IoDispatcher
 import com.bikcodeh.melichallenge.domain.usecase.SearchProductsUseCase
-import com.bikcodeh.melichallenge.presentation.ui.screens.home.HomeUiState
 import com.bikcodeh.melichallenge.presentation.ui.util.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher
