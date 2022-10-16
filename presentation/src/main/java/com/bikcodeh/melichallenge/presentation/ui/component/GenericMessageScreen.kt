@@ -25,6 +25,7 @@ import com.bikcodeh.melichallenge.presentation.ui.theme.textColor
 @Composable
 fun GenericMessageScreen(
     modifier: Modifier = Modifier,
+    textModifier: Modifier = Modifier,
     @RawRes lottieId: Int,
     @StringRes messageId: Int
 ) {
@@ -40,6 +41,7 @@ fun GenericMessageScreen(
     ) {
         LottieAnimation(composition, modifier = Modifier.size(HomeDefaults.EMPTY_PRODUCTS_LOTTIE_SIZE))
         Text(
+            modifier = textModifier,
             text = stringResource(id = messageId),
             fontSize = 18.sp,
             color = MaterialTheme.colorScheme.textColor

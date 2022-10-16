@@ -18,7 +18,7 @@
         android:theme="@style/Theme.MeliChallenge"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name=".presentation.MainActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustResize|stateHidden"
             android:theme="@style/Theme.MeliChallenge">

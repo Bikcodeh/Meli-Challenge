@@ -1,4 +1,4 @@
-package com.bikcodeh.melichallenge
+package com.bikcodeh.melichallenge.presentation
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
