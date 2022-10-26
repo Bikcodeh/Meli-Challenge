@@ -33,6 +33,7 @@
 - Dagger Hilt (Dependency injection)
 - Coil (Load images)
 - Retrofit (HTTP requests)
+- Pagination
 - Unit testing (Mockk, Thruth, Coroutines tests)
 
 ## Structure per module
@@ -93,9 +94,9 @@
  | :----: | :---------: | :-------: | :-----------: | :-----: |
  |<img src="https://raw.githubusercontent.com/Bikcodeh/Meli-Challenge/main/assets/screenshots/splash.png" align="left" height="300" width="1600">|<img src="https://raw.githubusercontent.com/Bikcodeh/Meli-Challenge/main/assets/screenshots/home.png" align="left" height="300" width="1600">|<img src="https://raw.githubusercontent.com/Bikcodeh/Meli-Challenge/main/assets/screenshots/loading.png" align="left" height="300" width="1600">|<img src="https://raw.githubusercontent.com/Bikcodeh/Meli-Challenge/main/assets/screenshots/searched.png" align="left" height="300" width="1600">|<img src="https://raw.githubusercontent.com/Bikcodeh/Meli-Challenge/main/assets/screenshots/detail.png" align="left" height="300" width="1600"> |
 
-| Detail Description |   Detail quantity modal  |    Detail quantity textfiel modal | Error  |
-| :-----------------:| :----------------------: | :----------------:| :----------------:|
-<img src="https://raw.githubusercontent.com/Bikcodeh/Meli-Challenge/main/assets/screenshots/detail_description.png" align="left" height="300" width="170">| <img src="https://raw.githubusercontent.com/Bikcodeh/Meli-Challenge/main/assets/screenshots/modal_quantity.png" align="left" height="300" width="170"> |  <img src="https://raw.githubusercontent.com/Bikcodeh/Meli-Challenge/main/assets/screenshots/modal_quantity_textfield.png" align="left" height="300" width="170"> | <img src="https://raw.githubusercontent.com/Bikcodeh/Meli-Challenge/main/assets/screenshots/error.png" align="left" height="300" width="170"> |
+| Detail Description |   Detail quantity modal  |    Detail quantity textfiel modal | Error  | Pagination error | 
+| :-----------------:| :----------------------: | :----------------:| :----------------:| :----------------:|
+<img src="https://raw.githubusercontent.com/Bikcodeh/Meli-Challenge/main/assets/screenshots/detail_description.png" align="left" height="300" width="170">| <img src="https://raw.githubusercontent.com/Bikcodeh/Meli-Challenge/main/assets/screenshots/modal_quantity.png" align="left" height="300" width="170"> |  <img src="https://raw.githubusercontent.com/Bikcodeh/Meli-Challenge/main/assets/screenshots/modal_quantity_textfield.png" align="left" height="300" width="170"> | <img src="https://raw.githubusercontent.com/Bikcodeh/Meli-Challenge/main/assets/screenshots/error.png" align="left" height="300" width="170"> | <img src="https://raw.githubusercontent.com/Bikcodeh/Meli-Challenge/main/assets/screenshots/error_pagination.png" align="left" height="300" width="170"> |
 
 ## :new_moon_with_face: Screenshots Dark Mode
 
@@ -103,15 +104,15 @@
  | :----: | :---------: | :-------: | :-----------: | :-----: |
  |<img src="https://raw.githubusercontent.com/Bikcodeh/Meli-Challenge/main/assets/screenshots/splash_dark.png" align="left" height="300" width="1600">|<img src="https://raw.githubusercontent.com/Bikcodeh/Meli-Challenge/main/assets/screenshots/home_dark.png" align="left" height="300" width="1600">|<img src="https://raw.githubusercontent.com/Bikcodeh/Meli-Challenge/main/assets/screenshots/loading_dark.png" align="left" height="300" width="1600">|<img src="https://raw.githubusercontent.com/Bikcodeh/Meli-Challenge/main/assets/screenshots/searched_dark.png" align="left" height="300" width="1600">|<img src="https://raw.githubusercontent.com/Bikcodeh/Meli-Challenge/main/assets/screenshots/detail_dark.png" align="left" height="300" width="1600">|
 
-| Detail Description | Detail quantity modal  |    Detail quantity textfiel modal  | Error  |
-| :----------------: |:----------------: |:--------------------------------: | :----------------: | 
-|<img src="https://raw.githubusercontent.com/Bikcodeh/Meli-Challenge/main/assets/screenshots/detail_description_dark.png" align="left" height="300" width="170">| <img src="https://raw.githubusercontent.com/Bikcodeh/Meli-Challenge/main/assets/screenshots/modal_quantity_dark.png" align="left" height="300" width="170"> |  <img src="https://raw.githubusercontent.com/Bikcodeh/Meli-Challenge/main/assets/screenshots/modal_quantity_textfield_dark.png" align="left" height="300" width="170"> | <img src="https://raw.githubusercontent.com/Bikcodeh/Meli-Challenge/main/assets/screenshots/error_dark.png" align="left" height="300" width="170"> |
+| Detail Description | Detail quantity modal  |    Detail quantity textfiel modal  | Error  | Pagination error | 
+| :----------------: |:----------------: |:--------------------------------: | :----------------: | ----------------: |
+|<img src="https://raw.githubusercontent.com/Bikcodeh/Meli-Challenge/main/assets/screenshots/detail_description_dark.png" align="left" height="300" width="170">| <img src="https://raw.githubusercontent.com/Bikcodeh/Meli-Challenge/main/assets/screenshots/modal_quantity_dark.png" align="left" height="300" width="170"> |  <img src="https://raw.githubusercontent.com/Bikcodeh/Meli-Challenge/main/assets/screenshots/modal_quantity_textfield_dark.png" align="left" height="300" width="170"> | <img src="https://raw.githubusercontent.com/Bikcodeh/Meli-Challenge/main/assets/screenshots/error_dark.png" align="left" height="300" width="170"> | <img src="https://raw.githubusercontent.com/Bikcodeh/Meli-Challenge/main/assets/screenshots/error_pagination_dark.png" align="left" height="300" width="170"> |
 
 ## :white_check_mark: Code coverage
 ### Unit testing for layers Domain, data and presentation (Viewmodels and Util class) with 100% coverage.
-| BaseViewModel |     DetailViewModel    |  HomeViewModel  |   MeliRepository  |
-| :-----------: | :--------------------: | :-------------: | :---------------: | 
-|    <img src="https://raw.githubusercontent.com/Bikcodeh/Meli-Challenge/main/assets/coverage/baseviewmodel.png" align="left" height="300" width="170">           | <img src="https://raw.githubusercontent.com/Bikcodeh/Meli-Challenge/main/assets/coverage/detailviewmodel.png" align="left" height="300" width="170"> | <img src="https://raw.githubusercontent.com/Bikcodeh/Meli-Challenge/main/assets/coverage/homeviewmodel.png" align="left" height="300" width="170"> | <img src="https://raw.githubusercontent.com/Bikcodeh/Meli-Challenge/main/assets/coverage/meliRepository.png" align="left" height="300" width="170"> |
+| BaseViewModel |     DetailViewModel    |  HomeViewModel  |   MeliRepository  | 
+| :-----------: | :--------------------: | :-------------: | :---------------: |
+|    <img src="https://raw.githubusercontent.com/Bikcodeh/Meli-Challenge/main/assets/coverage/baseviewmodel.png" align="left" height="300" width="170">           | <img src="https://raw.githubusercontent.com/Bikcodeh/Meli-Challenge/main/assets/coverage/detailviewmodel.png" align="left" height="300" width="170"> | <img src="https://raw.githubusercontent.com/Bikcodeh/Meli-Challenge/main/assets/coverage/homeviewmodel.png" align="left" height="300" width="170"> | <img src="https://raw.githubusercontent.com/Bikcodeh/Meli-Challenge/main/assets/coverage/meliRepository.png" align="left" height="300" width="170"> | 
 
 | Product Description UC |     Search Products UC    | 
 | :-----------: | :--------------------: |
