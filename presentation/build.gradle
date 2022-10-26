@@ -66,6 +66,7 @@ dependencies {
     implementation  deps.compose.lottie
     implementation  deps.compose.constraint_layout
     implementation  deps.compose.constraint_layout
+    implementation  deps.compose.paging
     api  deps.compose.system_ui_controller
 
     /** Dagger hilt */

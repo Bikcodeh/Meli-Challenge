@@ -28,6 +28,17 @@ fun Exception.toError(): Error = when (this) {
 }
 
 /**
+ * Convert a throwable into a Error validating which exception happened
+ * @return Error
+ */
+fun Throwable.toError(): Error = when (this) {
+    is UnknownHostException -> Error.InternetConnection
+    is IOException -> Error.Connectivity
+    is HttpException -> HttpErrors.handleError(code())
+    else -> Error.Unknown(message ?: "")
+}
+
+/**
  * With a specific code int value, uses handle error function to validate and return a http exception Error
  * @return Error
  */

@@ -6,5 +6,5 @@ import javax.inject.Inject
 class SearchProductsUseCase @Inject constructor(
     private val meliRepository: MeliRepository
 ) {
-    suspend operator fun invoke(query: String) = meliRepository.searchProducts(query)
+    operator fun invoke(query: String) = meliRepository.searchProducts(query)
 }

@@ -15,6 +15,7 @@ compose_versions.system_ui_controller = "0.24.11-rc"
 compose_versions.lottie = "5.2.0"
 compose_versions.material_icons = "1.1.1"
 compose_versions.coil = "2.2.2"
+compose_versions.pagination = "1.0.0-alpha15"
 
 def compose = [:]
 compose.activity = "androidx.activity:activity-compose:$compose_versions.activity"
@@ -28,6 +29,7 @@ compose.lottie = "com.airbnb.android:lottie-compose:$compose_versions.lottie"
 compose.material_icons = "androidx.compose.material:material-icons-extended:$compose_versions.material_icons"
 compose.ui = "androidx.compose.ui:ui:$compose_versions.core_compose"
 compose.coil = "io.coil-kt:coil-compose:$compose_versions.coil"
+compose.paging = "androidx.paging:paging-compose:$compose_versions.pagination"
 deps.compose = compose
 
 def dependenciesVersions = [:]
@@ -45,9 +47,11 @@ dependenciesVersions.moshiConverter = "2.9.0"
 dependenciesVersions.okHttpLoginInterceptor = "4.9.3"
 dependenciesVersions.okHttp = "4.9.0"
 dependenciesVersions.retrofit = "2.9.0"
+dependenciesVersions.paging = "3.1.1"
 
 deps.timber = "com.jakewharton.timber:timber:$dependenciesVersions.timber"
 deps.coreKtx = "androidx.core:core-ktx:$dependenciesVersions.coreKtx"
+deps.paging = "androidx.paging:paging-runtime-ktx:$dependenciesVersions.paging"
 
 def appCenter = [:]
 appCenter.analytics = "com.microsoft.appcenter:appcenter-analytics:$dependenciesVersions.appCenter"

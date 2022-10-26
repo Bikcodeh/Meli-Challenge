@@ -46,6 +46,7 @@ dependencies {
     implementation project(':domain')
     implementation project(':core_test')
     implementation deps.coreKtx
+    implementation deps.paging
     /** Dagger hilt */
     implementation deps.daggerHilt.android
     kapt deps.daggerHilt.compiler

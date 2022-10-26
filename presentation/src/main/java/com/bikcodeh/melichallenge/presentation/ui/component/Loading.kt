@@ -12,9 +12,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
-import com.airbnb.lottie.compose.LottieAnimation
-import com.airbnb.lottie.compose.LottieCompositionSpec
-import com.airbnb.lottie.compose.rememberLottieComposition
+import com.airbnb.lottie.compose.*
 import com.bikcodeh.melichallenge.presentation.R
 import com.bikcodeh.melichallenge.presentation.ui.theme.COMMON_PADDING
 
@@ -23,6 +21,10 @@ const val LOADING_CONTAINER = "LoadingContainer"
 @Composable
 fun Loading() {
     val composition by rememberLottieComposition(LottieCompositionSpec.RawRes(R.raw.searching))
+    val progress by animateLottieCompositionAsState(
+        composition = composition,
+        iterations = LottieConstants.IterateForever
+    )
     Column(
         modifier = Modifier
             .testTag(LOADING_CONTAINER)
@@ -33,7 +35,8 @@ fun Loading() {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         LottieAnimation(
-            composition
+            composition,
+            progress = { progress }
         )
     }
 }
