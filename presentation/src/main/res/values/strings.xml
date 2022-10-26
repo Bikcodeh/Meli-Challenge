@@ -29,4 +29,5 @@
     <string name="quantity">Quantity: %1$s</string>
     <string name="buy_now">Buy now</string>
     <string name="error_description">An error occurred fetching the description, please try again later.</string>
+    <string name="error_fetching_data">Ups! An error happened fetching more data.</string>
 </resources>

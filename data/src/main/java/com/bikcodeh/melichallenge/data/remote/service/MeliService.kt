@@ -18,7 +18,8 @@ interface MeliService {
     @GET("search")
     suspend fun searchProducts(
         @Query("q") query: String,
-        @Query("limit") limit: String = "10"
+        @Query("limit") limit: String = "10",
+        @Query("offset") offset: Int = 0
     ): Response<SearchResponse>
 
     /**

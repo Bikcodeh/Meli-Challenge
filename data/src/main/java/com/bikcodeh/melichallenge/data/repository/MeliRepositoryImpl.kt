@@ -1,5 +1,8 @@
 package com.bikcodeh.melichallenge.data.repository
 
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.PagingData
 import com.bikcodeh.melichallenge.data.remote.service.MeliService
 import com.bikcodeh.melichallenge.domain.common.Result
 import com.bikcodeh.melichallenge.domain.common.fold
@@ -7,8 +10,10 @@ import com.bikcodeh.melichallenge.domain.common.makeSafeRequest
 import com.bikcodeh.melichallenge.domain.model.Product
 import com.bikcodeh.melichallenge.domain.model.ProductDescription
 import com.bikcodeh.melichallenge.domain.repository.MeliRepository
+import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
+private const val NETWORK_PAGE_SIZE = 10
 /**
  * Class to handle requests to get products and product description
  * @param meliService: service that allow us to get the information from a remote service
@@ -22,20 +27,16 @@ class MeliRepositoryImpl @Inject constructor(
      * @param query: word or phrase to fetch products
      * @return Result<List<Product>>: returns a Result wrapper to handle the products or some error
      */
-    override suspend fun searchProducts(query: String): Result<List<Product>> {
-        val response = makeSafeRequest { meliService.searchProducts(query) }
-
-        return response.fold(
-            onSuccess = {
-                Result.Success(it.results.map { productDTO -> productDTO.toDomain() })
-            },
-            onError = { code, message ->
-                Result.Error(code, message)
-            },
-            onException = {
-                Result.Exception(it)
+    override fun searchProducts(query: String): Flow<PagingData<Product>> {
+        return Pager(
+            config = PagingConfig(
+                pageSize = NETWORK_PAGE_SIZE,
+                enablePlaceholders = false
+            ),
+            pagingSourceFactory = {
+                MeliPagingSource(meliService, query)
             }
-        )
+        ).flow
     }
 
     /**
