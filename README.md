@@ -29,7 +29,6 @@
 - Jetpack navigation compose
 - Lottie animations
 - Timber (Logs)
-- ViewModel
 - Dagger Hilt (Dependency injection)
 - Coil (Load images)
 - Retrofit (HTTP requests)
